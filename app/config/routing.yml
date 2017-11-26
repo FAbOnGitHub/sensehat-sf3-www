@@ -3,9 +3,10 @@ sensors:
     type:     annotation
     prefix:   /
 
-geo_bidule:
-    resource: "@GeoBiduleBundle/Resources/config/routing.yml"
-    prefix:   /
+sensors_data_send:
+    path:  /push
+    defaults: { _controller: SensorsBundle:Default:push }
+
 
 #app:
 #    resource: "@AppBundle/Controller/"
