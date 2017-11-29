@@ -99,4 +99,69 @@ class Dataset {
         return $this->description;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->datalines = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add dataline
+     *
+     * @param \FAb\SensorsBundle\Entity\Dataline $dataline
+     *
+     * @return Dataset
+     */
+    public function addDataline(\FAb\SensorsBundle\Entity\Dataline $dataline)
+    {
+        $this->datalines[] = $dataline;
+
+        return $this;
+    }
+
+    /**
+     * Remove dataline
+     *
+     * @param \FAb\SensorsBundle\Entity\Dataline $dataline
+     */
+    public function removeDataline(\FAb\SensorsBundle\Entity\Dataline $dataline)
+    {
+        $this->datalines->removeElement($dataline);
+    }
+
+    /**
+     * Get datalines
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDatalines()
+    {
+        return $this->datalines;
+    }
+
+    /**
+     * Set station
+     *
+     * @param \FAb\SensorsBundle\Entity\Station $station
+     *
+     * @return Dataset
+     */
+    public function setStation(\FAb\SensorsBundle\Entity\Station $station = null)
+    {
+        $this->station = $station;
+
+        return $this;
+    }
+
+    /**
+     * Get station
+     *
+     * @return \FAb\SensorsBundle\Entity\Station
+     */
+    public function getStation()
+    {
+        return $this->station;
+    }
 }

@@ -194,5 +194,28 @@ class Dataline
     {
         return $this->magnetism;
     }
-}
 
+    /**
+     * Set dataset
+     *
+     * @param \FAb\SensorsBundle\Entity\Dataset $dataset
+     *
+     * @return Dataline
+     */
+    public function setDataset(\FAb\SensorsBundle\Entity\Dataset $dataset = null)
+    {
+        $this->dataset = $dataset;
+
+        return $this;
+    }
+
+    /**
+     * Get dataset
+     *
+     * @return \FAb\SensorsBundle\Entity\Dataset
+     */
+    public function getDataset()
+    {
+        return $this->dataset;
+    }
+}

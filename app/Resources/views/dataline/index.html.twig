@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Datalines list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datetime</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>Pressure</th>
+                <th>Magnetism</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dataline in datalines %}
+            <tr>
+                <td><a href="{{ path('crud_dataline_show', { 'id': dataline.id }) }}">{{ dataline.id }}</a></td>
+                <td>{% if dataline.datetime %}{{ dataline.datetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ dataline.temperature }}</td>
+                <td>{{ dataline.humidity }}</td>
+                <td>{{ dataline.pressure }}</td>
+                <td>{{ dataline.magnetism }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('crud_dataline_show', { 'id': dataline.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('crud_dataline_edit', { 'id': dataline.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('crud_dataline_new') }}">Create a new dataline</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -152,4 +152,45 @@ class Station {
         return $this->description;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->datasets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add dataset
+     *
+     * @param \FAb\SensorsBundle\Entity\Dataset $dataset
+     *
+     * @return Station
+     */
+    public function addDataset(\FAb\SensorsBundle\Entity\Dataset $dataset)
+    {
+        $this->datasets[] = $dataset;
+
+        return $this;
+    }
+
+    /**
+     * Remove dataset
+     *
+     * @param \FAb\SensorsBundle\Entity\Dataset $dataset
+     */
+    public function removeDataset(\FAb\SensorsBundle\Entity\Dataset $dataset)
+    {
+        $this->datasets->removeElement($dataset);
+    }
+
+    /**
+     * Get datasets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDatasets()
+    {
+        return $this->datasets;
+    }
 }

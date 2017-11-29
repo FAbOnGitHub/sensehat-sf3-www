@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dataline</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ dataline.id }}</td>
+            </tr>
+            <tr>
+                <th>Datetime</th>
+                <td>{% if dataline.datetime %}{{ dataline.datetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Temperature</th>
+                <td>{{ dataline.temperature }}</td>
+            </tr>
+            <tr>
+                <th>Humidity</th>
+                <td>{{ dataline.humidity }}</td>
+            </tr>
+            <tr>
+                <th>Pressure</th>
+                <td>{{ dataline.pressure }}</td>
+            </tr>
+            <tr>
+                <th>Magnetism</th>
+                <td>{{ dataline.magnetism }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('crud_dataline_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('crud_dataline_edit', { 'id': dataline.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

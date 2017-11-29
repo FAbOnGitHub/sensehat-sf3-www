@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Lat</th>
+                <th>Lng</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for station in stations %}
+            <tr>
+                <td><a href="{{ path('crud_station_show', { 'id': station.id }) }}">{{ station.id }}</a></td>
+                <td>{{ station.name }}</td>
+                <td>{{ station.lat }}</td>
+                <td>{{ station.lng }}</td>
+                <td>{{ station.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('crud_station_show', { 'id': station.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('crud_station_edit', { 'id': station.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('crud_station_new') }}">Create a new station</a>
+        </li>
+    </ul>
+{% endblock %}
