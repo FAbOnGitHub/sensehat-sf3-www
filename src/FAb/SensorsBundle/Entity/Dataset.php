@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="dataset")
  * @ORM\Entity(repositoryClass="FAb\SensorsBundle\Repository\DatasetRepository")
  */
-class Dataset
-{
+class Dataset {
+
     /**
      * @var int
      *
@@ -22,169 +22,81 @@ class Dataset
     private $id;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="Datetime", type="datetime")
+     * @ORM\Column(name="name", type="string", length=64, unique=true)
      */
-    private $datetime;
+    private $name;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="temperature", type="float", nullable=true)
+     * @ORM\Column(name="description", type="string", length=255)
      */
-    private $temperature;
+    private $description;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="humidiy", type="float", nullable=true)
+     * @ORM\OneToMany(targetEntity="Dataline", mappedBy="dataset")
      */
-    private $humidiy;
+    private $datalines;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="pressure", type="float", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Station", inversedBy="datasets")
+     * @ORM\JoinColumn(name="station", referencedColumnName="id")
      */
-    private $pressure;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="magnetism", type="float", nullable=true)
-     */
-    private $magnetism;
-
+    private $station;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
     /**
-     * Set datetime
+     * Set name
      *
-     * @param \DateTime $datetime
+     * @param string $name
      *
      * @return Dataset
      */
-    public function setDatetime($datetime)
-    {
-        $this->datetime = $datetime;
+    public function setName($name) {
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get datetime
+     * Get name
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getDatetime()
-    {
-        return $this->datetime;
+    public function getName() {
+        return $this->name;
     }
 
     /**
-     * Set temperature
+     * Set description
      *
-     * @param float $temperature
+     * @param string $description
      *
      * @return Dataset
      */
-    public function setTemperature($temperature)
-    {
-        $this->temperature = $temperature;
+    public function setDescription($description) {
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get temperature
+     * Get description
      *
-     * @return float
+     * @return string
      */
-    public function getTemperature()
-    {
-        return $this->temperature;
+    public function getDescription() {
+        return $this->description;
     }
 
-    /**
-     * Set humidiy
-     *
-     * @param float $humidiy
-     *
-     * @return Dataset
-     */
-    public function setHumidiy($humidiy)
-    {
-        $this->humidiy = $humidiy;
-
-        return $this;
-    }
-
-    /**
-     * Get humidiy
-     *
-     * @return float
-     */
-    public function getHumidiy()
-    {
-        return $this->humidiy;
-    }
-
-    /**
-     * Set pressure
-     *
-     * @param float $pressure
-     *
-     * @return Dataset
-     */
-    public function setPressure($pressure)
-    {
-        $this->pressure = $pressure;
-
-        return $this;
-    }
-
-    /**
-     * Get pressure
-     *
-     * @return float
-     */
-    public function getPressure()
-    {
-        return $this->pressure;
-    }
-
-    /**
-     * Set magnetism
-     *
-     * @param float $magnetism
-     *
-     * @return Dataset
-     */
-    public function setMagnetism($magnetism)
-    {
-        $this->magnetism = $magnetism;
-
-        return $this;
-    }
-
-    /**
-     * Get magnetism
-     *
-     * @return float
-     */
-    public function getMagnetism()
-    {
-        return $this->magnetism;
-    }
 }
-

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="station")
  * @ORM\Entity(repositoryClass="FAb\SensorsBundle\Repository\StationRepository")
  */
-class Station
-{
+class Station {
+
     /**
      * @var int
      *
@@ -24,7 +24,7 @@ class Station
     /**
      * @var string
      *
-     * @ORM\Column(name="Name", type="string", length=64)
+     * @ORM\Column(name="name", type="string", length=64)
      */
     private $name;
 
@@ -45,18 +45,22 @@ class Station
     /**
      * @var string
      *
-     * @ORM\Column(name="Description", type="string", length=255, nullable=true)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="Dataset", mappedBy="station")
+     */
+    private $datasets;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -67,8 +71,7 @@ class Station
      *
      * @return Station
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -79,8 +82,7 @@ class Station
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -91,8 +93,7 @@ class Station
      *
      * @return Station
      */
-    public function setLat($lat)
-    {
+    public function setLat($lat) {
         $this->lat = $lat;
 
         return $this;
@@ -103,8 +104,7 @@ class Station
      *
      * @return float
      */
-    public function getLat()
-    {
+    public function getLat() {
         return $this->lat;
     }
 
@@ -115,8 +115,7 @@ class Station
      *
      * @return Station
      */
-    public function setLng($lng)
-    {
+    public function setLng($lng) {
         $this->lng = $lng;
 
         return $this;
@@ -127,8 +126,7 @@ class Station
      *
      * @return float
      */
-    public function getLng()
-    {
+    public function getLng() {
         return $this->lng;
     }
 
@@ -139,8 +137,7 @@ class Station
      *
      * @return Station
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -151,9 +148,8 @@ class Station
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
-}
 
+}
