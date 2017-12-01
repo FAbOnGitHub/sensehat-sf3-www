@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends "SensorsBundle:Default:layout.html.twig" %}
 
-{% block body %}
+{% block content %}
     <h1>Stations list</h1>
 
     <table>
@@ -15,25 +15,25 @@
             </tr>
         </thead>
         <tbody>
-        {% for station in stations %}
-            <tr>
-                <td><a href="{{ path('crud_station_show', { 'id': station.id }) }}">{{ station.id }}</a></td>
-                <td>{{ station.name }}</td>
-                <td>{{ station.lat }}</td>
-                <td>{{ station.lng }}</td>
-                <td>{{ station.description }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('crud_station_show', { 'id': station.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('crud_station_edit', { 'id': station.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for station in stations %}
+                <tr>
+                    <td><a href="{{ path('crud_station_show', { 'id': station.id }) }}">{{ station.id }}</a></td>
+                    <td>{{ station.name }}</td>
+                    <td>{{ station.lat }}</td>
+                    <td>{{ station.lng }}</td>
+                    <td>{{ station.description }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('crud_station_show', { 'id': station.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('crud_station_edit', { 'id': station.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

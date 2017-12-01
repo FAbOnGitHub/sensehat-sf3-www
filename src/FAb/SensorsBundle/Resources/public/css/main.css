@@ -97,7 +97,7 @@ Desktops (≥1200px)        */
 /* bootstrap sm tablet */
 @media (min-width: 480px) and (max-width: 768px) {
     body {
-        background-image: url('../img/wallpapers/wallpaper-pillar_1024x768.jpg');
+       /* background-image: url('../img/wallpapers/wallpaper-pillar_1024x768.jpg'); */
     }
     h1 {
         font-size: 110%;
@@ -128,7 +128,7 @@ Desktops (≥1200px)        */
 /* bootstrap medium desktop */
 @media (min-width: 768px) and (max-width: 992px) {
     body {
-        background-image: url('../img/wallpapers/wallpaper-pillar_1920x1080.jpg');
+    /*    background-image: url('../img/wallpapers/wallpaper-pillar_1920x1080.jpg');*/
     }
     h1 {
         font-size: 120%;
@@ -147,7 +147,7 @@ Desktops (≥1200px)        */
 /* bootstrap medium desktop */
 @media (min-width: 992px) and (max-width: 1200px) {
     body {
-        background-image: url('../img/wallpapers/wallpaper-pillar_1920x1080.jpg');
+       /* background-image: url('../img/wallpapers/wallpaper-pillar_1920x1080.jpg');*/
     }
     h1 {
         font-size: 120%;
@@ -165,7 +165,7 @@ Desktops (≥1200px)        */
 /* bootstrap large desktop */
 @media (min-width: 1200px) {
     body {
-        background-image: url('../img/wallpapers/wallpaper-pillar_3840x2160.jpg');
+      /*  background-image: url('../img/wallpapers/wallpaper-pillar_3840x2160.jpg');*/
     }
 
 }

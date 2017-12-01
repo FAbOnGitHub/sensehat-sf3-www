@@ -4,9 +4,10 @@
  * Les utilisateurs
  */
 
-namespace AbundanceBundle\Entity;
+namespace FAb\SensorsBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
+//use FOS\UserBundle\Entity\User as BaseUser;
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
