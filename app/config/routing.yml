@@ -3,6 +3,19 @@ sensors:
     type:     annotation
     prefix:   /
 
+home:
+    path:  /
+    defaults: { _controller: SensorsBundle:Default:index }
+    options: { i18n: false }
+credits:
+    path:  /credits
+    defaults: { _controller: SensorsBundle:Default:index }
+    options: { i18n: false }
+contact:
+    path:  /contact
+    defaults: { _controller: SensorsBundle:Default:index }
+    options: { i18n: false }
+
 sensors_data_send:
     path:  /push
     defaults: { _controller: SensorsBundle:Default:push }
@@ -15,4 +28,4 @@ sensors_data_send:
 
 # app/config/routing.yml
 fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"    
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

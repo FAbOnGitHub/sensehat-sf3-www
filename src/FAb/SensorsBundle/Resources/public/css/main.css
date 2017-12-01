@@ -1,0 +1,542 @@
+/*
+    Created on : Jul 21, 2016, 4:15:10 PM
+    Author     : mendes
+
+*/
+
+
+/*
+   Note pour le responsive :
+   Les principaux points de rupture (320px, 480px, 768px, 1024px, etc.)
+
+    '3840x2160' '1920x1080' '1280x720' '1024x768' '640x360'
+*/
+body {
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+h1 {
+    font-size: 120%;
+}
+h2 {
+    font-size:  110%;
+}
+h3 {
+    font-size: 105%;
+}
+h4 {
+    font-size: 103%;
+}
+h1,h2,h3,h4 {
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+h1 {
+    text-align: center;
+}
+h2 {
+    color: #F00;
+}
+h3 {
+    color: #000;
+    font-weight: bold;
+}
+h4 {
+    font-style: italic;
+}
+
+
+h1.main-title {
+    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}
+#ours {
+    font-size: 1.5em;
+    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+    margin-bottom: 30px;
+}
+
+
+
+/* bootstrap
+Phones (<768px) 	Small devices
+Tablets (≥768px) 	Medium devices
+Desktops (≥992px) 	Large devices
+Desktops (≥1200px)        */
+/* bootstrap xs Phones */
+@media (max-width: 480px) {
+    background-color: #2e2e2e;
+    h1 {
+        font-size: 105%;
+    }
+    h2 {
+        font-size:  100%;
+    }
+    h3 {
+        font-size: 100%;
+    }
+    h4 {
+        font-size: 100%;
+    }
+    h1,h2,h3,h4 {
+        font-weight: bold;
+    }
+    h1.main-title {
+        text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+    }
+    #ours {
+        font-size: 1em;
+        text-shadow: none;
+        margin-bottom: 10px;
+    }
+}
+/* bootstrap sm tablet */
+@media (min-width: 480px) and (max-width: 768px) {
+    body {
+        background-image: url('../img/wallpapers/wallpaper-pillar_1024x768.jpg');
+    }
+    h1 {
+        font-size: 110%;
+        font-weight: bold;
+    }
+    h2 {
+        font-size:  105%;
+    }
+    h3 {
+        font-size: 100%;
+    }
+    h4 {
+        font-size: 100%;
+    }
+    h1,h2,h3,h4 {
+        font-weight: bold;
+    }
+    h1.main-title {
+        text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+    }
+    #ours {
+        font-size: 1.2em;
+        text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+        margin-bottom: 10px;
+    }
+
+}
+/* bootstrap medium desktop */
+@media (min-width: 768px) and (max-width: 992px) {
+    body {
+        background-image: url('../img/wallpapers/wallpaper-pillar_1920x1080.jpg');
+    }
+    h1 {
+        font-size: 120%;
+    }
+    h2 {
+        font-size:  110%;
+    }
+    h3 {
+        font-size: 105%;
+    }
+    h4 {
+        font-size: 103%;
+    }
+}
+
+/* bootstrap medium desktop */
+@media (min-width: 992px) and (max-width: 1200px) {
+    body {
+        background-image: url('../img/wallpapers/wallpaper-pillar_1920x1080.jpg');
+    }
+    h1 {
+        font-size: 120%;
+    }
+    h2 {
+        font-size:  110%;
+    }
+    h3 {
+        font-size: 105%;
+    }
+    h4 {
+        font-size: 103%;
+    }
+}
+/* bootstrap large desktop */
+@media (min-width: 1200px) {
+    body {
+        background-image: url('../img/wallpapers/wallpaper-pillar_3840x2160.jpg');
+    }
+
+}
+
+
+
+
+/**
+ * Trucs génériques (et peut-être inutile)
+ */
+.font-narrow {
+    font-family: Arial Narrow,Arial,sans-serif;
+}
+
+.font-lobster {
+    font-family: 'Lobster', cursive;
+}
+
+.ahah {
+    font-size: 200%;
+}
+
+
+/**
+ * Structure header, footer, article et aside
+ */
+
+.jumbotron {
+    background-color: rgba(255, 255, 255, 0.1) ;
+    /*background-color:transparent !important; */
+}
+
+
+.footer-menu, .header-menu {
+    /*    padding: 2px;*/
+    /*background-color: rgba(44, 44, 44, 0.5) ;*/
+    background-color: rgba(255, 255, 255, 0.9) ;
+}
+
+.nav-pills > li > a {
+    border-radius: 0px;
+}
+.nav-pills > li:hover {
+    background-color: orange;
+}
+.nav-pills > li > a:hover {
+    color: #fff !important;
+}
+
+.pull-left {
+    margin-left: -15px;
+}
+
+.brand-isa {
+    color: #2d2d2d;
+    /*display: inline;*/
+}
+
+
+article {
+    min-height: 300px;
+    /*background-color: #2d2d2d;*/
+
+    /*
+    -moz-box-shadow: 10px 10px 7px 0px #656565;
+    -webkit-box-shadow: 10px 10px 7px 0px #656565;
+    -o-box-shadow: 10px 10px 7px 0px #656565;
+    box-shadow: 10px 10px 7px 0px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=7);
+    */
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+/**
+ *  Formulaire
+ */
+
+.transparent-input {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: 1px solid #FFF !important;
+    box-shadow: none !important;
+    height: 50px;
+    font-size: 24px;
+    color: #FFF;
+}
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #ccc;
+}
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #ccc;
+    opacity: 1;
+}
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #ccc;
+    opacity: 1;
+}
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #ccc;
+}
+
+
+.form-control::-moz-placeholder {
+    color: #ccc;
+    opacity: 1;
+}
+*::-moz-placeholder {
+    color: #ccc;
+    opacity: 1;
+}
+
+
+/**
+ * Table des résultats
+ */
+
+#table-results> tbody {
+    background-color: rgba(255, 255, 255, 0.8) ;
+}
+
+#table-results> tbody > tr {
+    background: transparent;
+}
+
+/* Les tables par défaut */
+table.table-stiped > tbody > tr:nth-child(odd) > td {
+    background-color: rgba(242, 208, 163, 0.3) ;
+}
+
+table.table-stiped > tbody > tr:nth-child(even) > td {
+    background-color: rgba(105, 65, 29, 0.3) ;
+}
+
+
+/* La table résultats */
+#table-results> tbody > tr:nth-child(odd) > td {
+    background-color: rgba(242, 208, 163, 0.3) ;
+    /*background-color: rgba(10, 10, 255, 0.3) ;*/
+}
+
+#table-results> tbody > tr:nth-child(even) > td {
+    background-color: rgba(105, 65, 29, 0.3) ;
+    /*background-color: rgba(10, 10, 255, 0.3) ;*/
+}
+
+div.details {
+    cursor: pointer;
+    text-decoration: none;
+}
+div.details-titre {
+    text-decoration: underline;
+    color: #999999;
+    font-style: italic;
+    text-align: right;
+}
+div.details-corps {
+    color: #999999;
+    text-decoration: none;
+    font-style: normal;
+    text-align: justify;
+    font-size: 0.9em;
+}
+div.details-discret {
+    color: #999999;
+    text-decoration: none;
+    font-style: normal;
+    text-align: justify;
+    font-size: 0.9em;
+}
+
+
+span.qcode {
+    color: #999999;
+    font-style: italic;
+    font-size: 0.7em;
+    text-align: right;
+}
+span.qcode-VALID {
+    color: #999999;
+}
+span.qcode-VALID::before {
+    content: "✓";
+    color: green;
+    font-weight: bold;
+}
+.qcode-UPPER_LIMIT, .qcode-LOWER_LIMIT  {
+    color: #999999;
+}
+.qcode-UPPER_LIMIT::before, .qcode-LOWER_LIMIT::before  {
+    content: "✗";
+    color: orange;
+    font-weight: bold;
+}
+
+.uncert {
+    color: #656565;
+}
+
+
+/**
+ * Page FAQ
+ */
+
+
+h4.faq-question {
+    font-weight: bold;
+    font-size: 1.2em;
+    /*font-family: 'Lobster', cursive;*/
+    margin-top: 2em;
+}
+
+h4.faq-answer {
+    font-size: 1em;
+    /* font-family: Arial Narrow,Arial,sans-serif;*/
+}
+
+
+p.faq {
+    font-family: cursive;
+    font-size: 95%;
+    margin-bottom: 20px;
+}
+
+
+#toc-faq {
+
+}
+
+.tocify {
+    border-radius: 6px;
+    position: relative;
+    /*width: auto;*/
+    width: 100%;
+}
+
+
+li.data-li {
+    /*list-style-image : url('/bundles/abundance/img/spirale_footer.png');*/
+    /*list-style-image : url('/bundles/abundance/img/Abundance_logo_16x16.png');*/
+    list-style: none;
+}
+
+/*#data-panel,*/
+/*#faq-content-panel,*/
+.fond-grise,
+#toc-faq {
+    background-color: rgba(255, 255, 255, 0.7) ;
+}
+
+/* Sert sur toutes les vues standards et reprend
+     white-opacity70 border-radius10
+*/
+.main-view {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/**
+ * Pages contact / crédits
+ */
+
+.vignette {
+    margin-bottom: 50px;
+}
+.contact-role {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.contact-person {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+p.credit {
+    font-size: 90%;
+}
+
+/*
+ * The other side
+ */
+#dropfile{
+    width: 200px;
+    height: 200px;
+    border: 3px dashed #BBBBBB;
+    line-height:50px;
+    text-align: center;
+    color: #999999;
+
+    background-color: rgba(255, 255, 255, 0.3) ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+div.status-icon-ok, div.status-icon-wait {
+    width: 30px;
+}
+div.status-icon-content, div.status-icon-ok, div.status-icon-wait {
+    display: inline;
+    display: inline-block;
+}
+
+.frm-row-status {
+    background-color: rgba(255, 255, 255, 0.3) ;
+}
+
+
+.frm-row-main {
+    background-color: red;
+    background-color: rgba(255, 255, 255, 0.3) ;
+}
+/*
+.frm-row-dropzone {
+    background-color: blue;
+}
+.frm-row-pick {
+    background-color: #080;
+}
+.frm-row-old-school {
+    background-color: rgba(25, 25, 25, 0.3) ;
+}
+*/
+
+.border-radius10 {
+    border-radius: 10px;
+}
+
+.white-opacity10 {
+    background-color: rgba(255, 255, 255, 0.1) ;
+}
+
+.white-opacity20 {
+    background-color: rgba(255, 255, 255, 0.2) ;
+}
+
+.white-opacity30 {
+    background-color: rgba(255, 255, 255, 0.3) ;
+}
+
+.white-opacity40 {
+    background-color: rgba(255, 255, 255, 0.4) ;
+}
+
+.white-opacity50 {
+    background-color: rgba(255, 255, 255, 0.5) ;
+}
+
+.white-opacity60 {
+    background-color: rgba(255, 255, 255, 0.6) ;
+}
+
+.white-opacity70 {
+    background-color: rgba(255, 255, 255, 0.7) ;
+}
+
+.white-opacity80 {
+    background-color: rgba(255, 255, 255, 0.8) ;
+}
+
+.white-opacity90 {
+    background-color: rgba(255, 255, 255, 0.9) ;
+}

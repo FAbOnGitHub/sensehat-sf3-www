@@ -39,6 +39,20 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    #form:
+      #  resources: ['bootstrap_3_layout.html.twig']
+        # resources: ['bootstrap_3_horizontal_layout.html.twig']
+    globals:
+        reverse_proxy_tag: ~
+        title: Sensors with Sense Hat
+        page_title: ":) "
+        favicon: /bundles/sensors/favicon/favicon-isa-blue_16x16.ico
+        favicon_apple: /bundles/sensors/favicon/favicon-isa-blue
+
+    #paths:
+    #    '%kernel.root_dir%/../src/SensorsBundle/Resources/views/Admin/': CRUD
+
+
 
 # Doctrine Configuration
 doctrine:
@@ -75,7 +89,7 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class:  FAb\GeoBiduleBundle\Entity\User
+    user_class:  FAb\SensorsBundle\Entity\User
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
@@ -84,7 +98,7 @@ fos_user:
             enabled: true
             from_email:
                 address:        registration@%fqdn_host%
-                sender_name:    Demo GeoHost
+                sender_name:    Demo Sensors
     resetting:
         email:
             from_email:

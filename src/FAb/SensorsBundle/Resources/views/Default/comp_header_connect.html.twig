@@ -1,0 +1,15 @@
+<div>
+    {% if app.user %}
+        {# user is logged in #}
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> &nbsp;
+        <a href="{{ path('fos_user_profile_edit') }}" title="Edit profile">
+            <strong>{{ app.user.username }}</strong>
+        </a>
+        <br />
+        <small><i>{{ app.user.greetings }}</i></small> <br />
+        <a href="{{ path('fos_user_security_logout') }}" title="logout"> logout </a>
+    {% else %}
+        {# user is not logged in #}
+        <a href="{{ path('fos_user_security_login') }}" title="login"> login </a>
+    {% endif %}
+</div>

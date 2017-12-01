@@ -1,1 +1,19 @@
-Hello World!
+{% extends "SensorsBundle:Default:layout.html.twig" %}
+{% block stylesheets %}
+    {{parent()}}
+    <!--
+    <link href="/bundles/sensors/css/main.css" rel="stylesheet">
+    -->
+{% endblock %}
+
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <p> Hello funny World! Ça rocks!</p>
+            <p> That's all folks!</p>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+{% endblock %}

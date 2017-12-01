@@ -1,23 +1,23 @@
 <?php
 
-namespace FAb\GeoBiduleBundle\Entity;
+/*
+ * Les utilisateurs
+ */
 
+namespace AbundanceBundle\Entity;
+
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as BaseUser;
 
 /**
- * User
- *
+ * @ORM\Entity
  * @ORM\Table(name="fos_user")
- * @ORM\Entity(repositoryClass="FAb\GeoBiduleBundle\Repository\UserRepository")
  */
-class User extends BaseUser
-{
+class User extends BaseUser {
+
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
@@ -25,99 +25,47 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="Login", type="string", length=255, nullable=true, unique=true)
+     * @ORM\Column(name="greetings", type="string", length=256, nullable=true)
      */
-    protected $login;
+    protected $greetings;
 
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Question", type="string", length=255, nullable=true)
-     */
-    protected $question;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        parent::__construct();
+        // your own logic
     }
 
+    /*
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        parent::buildForm($builder, $options);
+
+        // add your custom field
+        $builder->add('greetings');
+    }
+*/
     /**
-     * Set login
+     * Set greetings
      *
-     * @param string $login
+     * @param string $greetings
      *
      * @return User
      */
-    public function setLogin($login)
+    public function setGreetings($greetings)
     {
-        $this->login = $login;
+        $this->greetings = $greetings;
 
         return $this;
     }
 
     /**
-     * Get login
+     * Get greetings
      *
      * @return string
      */
-    public function getLogin()
+    public function getGreetings()
     {
-        return $this->login;
+        return $this->greetings;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set question
-     *
-     * @param string $question
-     *
-     * @return User
-     */
-    public function setQuestion($question)
-    {
-        $this->question = $question;
-
-        return $this;
-    }
-
-    /**
-     * Get question
-     *
-     * @return string
-     */
-    public function getQuestion()
-    {
-        return $this->question;
-    }
 }
-

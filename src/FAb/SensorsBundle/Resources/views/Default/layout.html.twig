@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="FAbrice Mendes">
+
+        <link rel="icon" href="{{ favicon }}">
+        <link rel="shortcut icon" href="{{ favicon }}">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="{{favicon_apple}}_57x57.png?v=Gvv0lovknM">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{favicon_apple}}_60x60.png?v=Gvv0lovknM">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{favicon_apple}}_72x72.png?v=Gvv0lovknM">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{favicon_apple}}_76x76.png?v=Gvv0lovknM">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{favicon_apple}}_114x114.png?v=Gvv0lovknM">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{favicon_apple}}_120x120.png?v=Gvv0lovknM">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{favicon_apple}}_144x144.png?v=Gvv0lovknM">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{favicon_apple}}_152x152.png?v=Gvv0lovknM">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{favicon_apple}}_180x180.png?v=Gvv0lovknM">
+        <link rel="icon" type="image/png" href="{{favicon_apple}}_32x32.png?v=Gvv0lovknM" sizes="32x32">
+        <link rel="icon" type="image/png" href="{{favicon_apple}}_192x192.png?v=Gvv0lovknM" sizes="192x192">
+        <link rel="icon" type="image/png" href="{{favicon_apple}}_96x96.png?v=Gvv0lovknM" sizes="96x96">
+        <link rel="icon" type="image/png" href="{{favicon_apple}}_16x16.png?v=Gvv0lovknM" sizes="16x16">
+        <link rel="manifest" href="/manifest.json?v=Gvv0lovknM">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg?v=Gvv0lovknM">
+        <meta name="apple-mobile-web-app-title" content="ISA">
+        <meta name="application-name" content="ISA">
+        <meta name="msapplication-TileColor" content="#b91d47">
+        <meta name="msapplication-TileImage" content="/mstile-144x144.png?v=Gvv0lovknM">
+        <meta name="theme-color" content="#ffffff">
+
+        <title>{% block title %} {{ page_title |default(':)')}} - {{ title }} {% endblock %}</title>
+
+        {% block keywords %}
+            <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+            <meta name="DC.Title" content="Sensors" />
+            <meta name="DC.Creator" content="F Mendes" />
+            <meta name="DC.Subject" content="Sensors for raspberry sense hat" />
+            <meta name="DC.Publisher" content="FAb" />
+            <meta name="DC.Date" content="2017-12-25" />
+        {% endblock %}
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <!-- Bootstrap core CSS -->
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet"
+                  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+                  >
+            <!-- Optional theme -->
+            <link rel="stylesheet"
+                  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+                  >
+            <link rel="stylesheet"
+                  href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
+                  >
+
+            <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
+            <link rel="stylesheet" href="{{ asset("bundles/sensors/font-awesome/css/font-awesome.min.css") }}">
+
+
+            <!-- Custom styles for all my templates -->
+            <link href="{{reverse_proxy_tag}}{{asset('/bundles/sensors/css/main.css')}}" rel="stylesheet">
+
+            <!-- Custom styles for this template -->
+
+
+
+            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+              <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+        {% endblock %}
+
+    </head>
+
+    <body>
+        <div class="container">
+            <header class=" clearfix"> <!-- .header-menu -->
+                {{ include('SensorsBundle:Default:comp_header.html.twig') }}
+            </header>
+            <article>
+                <div class="container-fluid jumbotron" >
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 text-center">
+                            <h1 class="cover-heading main-title">{{ title }}</h1>
+                        </div>
+                    </div>
+
+                    <div class='row text-center'>
+                        <div id="ours" name="ours" class="col-md-12 col-xs12">
+                            Uncritical compilation of observed atomic and molecular
+                            abundances in various interstellar environments gathered
+                            from the litterature
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-12 col-xs-12">
+                            {% block content %}
+                                <p> If you see this message, this means that a problem occured. </p>
+                            {% endblock %}
+                            {% for type, messages in app.session.flashBag.all %}
+                                {% for message in messages %}
+                                    <div class="{{ type }}">
+                                        {{ message|trans({}, 'FOSUserBundle') }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+
+                            <div>
+                                {% block fos_user_content %}
+                                {% endblock fos_user_content %}
+                            </div>
+                        </div>
+                    </div> <!-- row -->
+                </div> <!-- jumbotron -->
+            </article>
+            <aside>
+            </aside>
+
+            <footer class="footer-menu clearfix">
+                {{ include('SensorsBundle:Default:comp_footer.html.twig') }}
+            </footer>
+            <!-- Bootstrap core JavaScript ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            {% block javascripts %}
+                <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+                <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+
+                <!-- Latest compiled and minified JavaScript -->
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" >
+                </script>
+                <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+                <script src="{{reverse_proxy_tag}}{{asset('/bundles/sensors/js/sensors.js') }}"></script>
+            {% endblock %}
+
+        </div><!-- .container -->
+    </body>
+</html>
