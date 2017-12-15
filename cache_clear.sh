@@ -46,7 +46,7 @@ if [ "x$bad_files" != "x" ]; then
         exit 0
     fi
     echo "fixing var to ${owner_name}:www-data"
-    set -x
+    #set -x
     chown -R $owner_name:www-data $dirs
     chmod -R ug+rw,o-rw $dirs
     echo "Perms fixed!"

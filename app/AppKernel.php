@@ -3,6 +3,8 @@
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
+umask(0002); // This will let the permissions be 0775
+
 class AppKernel extends Kernel
 {
     public function registerBundles()
