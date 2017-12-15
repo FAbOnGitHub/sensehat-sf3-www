@@ -1,3 +1,0 @@
-geo_bidule_homepage:
-    path:     /
-    defaults: { _controller: GeoBiduleBundle:Default:index }

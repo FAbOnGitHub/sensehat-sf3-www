@@ -64,7 +64,14 @@ class Dataline
      */
     private $magnetism;
 
+   /**
+     * @var float
+     *
+     * @ORM\Column(name="temperature_cpu", type="float", nullable=true)
+     */
+    private $temperature_cpu;
 
+    
     /**
      * Get id
      *
@@ -217,5 +224,29 @@ class Dataline
     public function getDataset()
     {
         return $this->dataset;
+    }
+
+    /**
+     * Set temperatureCpu
+     *
+     * @param float $temperatureCpu
+     *
+     * @return Dataline
+     */
+    public function setTemperatureCpu($temperatureCpu)
+    {
+        $this->temperature_cpu = $temperatureCpu;
+
+        return $this;
+    }
+
+    /**
+     * Get temperatureCpu
+     *
+     * @return float
+     */
+    public function getTemperatureCpu()
+    {
+        return $this->temperature_cpu;
     }
 }

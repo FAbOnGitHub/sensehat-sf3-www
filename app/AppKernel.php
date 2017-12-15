@@ -18,8 +18,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            //new FAb\GeoBiduleBundle\GeoBiduleBundle(),
-            //new AppBundle\AppBundle(),
+
             new FAb\SensorsBundle\SensorsBundle(),
         ];
 

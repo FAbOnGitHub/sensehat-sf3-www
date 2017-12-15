@@ -1,4 +1,0 @@
-services:
-#    geo_bidule.example:
-#        class: FAb\GeoBiduleBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
