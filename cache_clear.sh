@@ -23,18 +23,22 @@ apache_u=$(getent passwd  www-data |awk 'BEGIN{FS=":"} {print $3}')
 owner_id=$(stat -c %g $ME)
 owner_name=$(stat -c %U $ME)
 
-dirs="var/cache web/bundles"
+dirs="var/cache web/bundles var/sessions var/logs"
 
 function call_cache_script()
 {
     wget -q -O - $url
     rc=$?
+    if [ $rc -ne 0 ]; then
+        echo "Error wget [rc=$rc]" 2>&1
+        exit $rc
+    fi
     return $rc    
 }
 
 function fix_perms()
 {
-    chown -R $owner_name:www-data var/cache/
+    chown -R $owner_name:www-data $dirs
     chown -R www-data:www-data web/bundles/
     chmod -R ug+rw,o-rw $dirs
 }
