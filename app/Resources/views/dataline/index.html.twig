@@ -3,17 +3,18 @@
 {% block body %}
     <h1>Datalines list</h1>
 
-    <table>
+    <table class="table table-striped crud">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Datetime</th>
-                <th>Temperature</th>
-                <th>Humidity</th>
-                <th>Pressure</th>
-                <th>Magnetism</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Datetime</th>
+            <th>Temperature</th>
+            <th>Humidity</th>
+            <th>Pressure</th>
+            <th>Magnetism</th>
+            <th>Temperature_cpu</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for dataline in datalines %}
@@ -24,15 +25,10 @@
                 <td>{{ dataline.humidity }}</td>
                 <td>{{ dataline.pressure }}</td>
                 <td>{{ dataline.magnetism }}</td>
+                <td>{{ dataline.temperaturecpu }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('crud_dataline_show', { 'id': dataline.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('crud_dataline_edit', { 'id': dataline.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('crud_dataline_show', { 'id': dataline.id }) }}" class="btn btn-primary btn-xs">show</a>
+                    <a href="{{ path('crud_dataline_edit', { 'id': dataline.id }) }}" class="btn btn-primary btn-xs">edit</a>
                 </td>
             </tr>
         {% endfor %}

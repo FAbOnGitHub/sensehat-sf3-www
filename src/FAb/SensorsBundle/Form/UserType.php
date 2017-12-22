@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DatasetType extends AbstractType
+class UserType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('description')->add('station');
+        $builder->add('greetings');
     }
 
     /**
@@ -22,7 +22,7 @@ class DatasetType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'FAb\SensorsBundle\Entity\Dataset'
+            'data_class' => 'FAb\SensorsBundle\Entity\User'
         ));
     }
 
@@ -31,7 +31,7 @@ class DatasetType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'fab_sensorsbundle_dataset';
+        return 'fab_sensorsbundle_user';
     }
 
 

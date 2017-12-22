@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Dataline</h1>
 
-    <table>
+    <table class="table table-striped">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -28,6 +28,10 @@
             <tr>
                 <th>Magnetism</th>
                 <td>{{ dataline.magnetism }}</td>
+            </tr>
+            <tr>
+                <th>Temperature_cpu</th>
+                <td>{{ dataline.temperaturecpu }}</td>
             </tr>
         </tbody>
     </table>

@@ -15,7 +15,7 @@ class StationType extends AbstractType
     {
         $builder->add('name')->add('lat')->add('lng')->add('description');
     }
-    
+
     /**
      * {@inheritdoc}
      */

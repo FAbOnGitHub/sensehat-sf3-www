@@ -13,9 +13,9 @@ class DatalineType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('datetime')->add('temperature')->add('humidity')->add('pressure')->add('magnetism')->add('dataset');
+        $builder->add('datetime')->add('temperature')->add('humidity')->add('pressure')->add('magnetism')->add('temperature_cpu')->add('dataset');
     }
-    
+
     /**
      * {@inheritdoc}
      */
