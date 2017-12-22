@@ -6,10 +6,10 @@ use Monolog\Logger;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
+
+use FOS\RestBundle\Controller\Annotations\Get;
+use FOS\RestBundle\Controller\Annotations\View;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class jsonController extends Controller
@@ -29,11 +29,6 @@ class jsonController extends Controller
             return new JsonResponse(array('data' => 'error'));
         }
 
-
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-
         $data = array();
         foreach ($datalines as $dataline) {
             $data[] = array(
@@ -49,8 +44,14 @@ class jsonController extends Controller
         return new JsonResponse(array($data));
     }
 
+    //* @Route("/listStation")
     /**
-     * @Route("/listStation")
+     * @Get("/stations")
+     * @Get(
+     *     path = "/listStation/{id}",
+     *     name = "list_station",
+     * )
+     * @View
      */
     public function listStationAction()
     {
@@ -62,7 +63,7 @@ class jsonController extends Controller
             $logger = new Logger();
             $logger->alert("No stations");
         }
-        return new JsonResponse(array('data' => $stations));
+        return new Response( $stations );
     }
 
 }
