@@ -1,11 +1,12 @@
 <?php
 
-namespace FAb\SensorsBundle\Controller;
+namespace FAb\SensorsBundle\Controller\CRUD;
 
 use FAb\SensorsBundle\Entity\Dataline;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * Dataline controller.

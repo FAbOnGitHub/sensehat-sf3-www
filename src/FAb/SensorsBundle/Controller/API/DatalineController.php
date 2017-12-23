@@ -1,6 +1,6 @@
 <?php
 
-namespace FAb\SensorsBundle\Controller;
+namespace FAb\SensorsBundle\Controller\API;
 
 use FAb\SensorsBundle\Entity\Dataline;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DatalineController extends Controller
 {
 
-    public function getDatalineAction()
+    public function getDatalinesAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -21,11 +21,11 @@ class DatalineController extends Controller
         return $datalines;
     }
 
-    public function getDatalineAction()
+    public function getDatalineAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $datalines = $em->getRepository('SensorsBundle:Dataline')->findAll();
+        $datalines = $em->getRepository('SensorsBundle:Dataline')->find($id);
 
         return $datalines;
     }

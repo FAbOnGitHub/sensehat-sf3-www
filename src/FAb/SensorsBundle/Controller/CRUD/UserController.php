@@ -1,6 +1,6 @@
 <?php
 
-namespace FAb\SensorsBundle\Controller;
+namespace FAb\SensorsBundle\Controller\CRUD;
 
 use FAb\SensorsBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

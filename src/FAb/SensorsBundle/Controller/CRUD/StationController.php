@@ -1,11 +1,12 @@
 <?php
 
-namespace FAb\SensorsBundle\Controller;
+namespace FAb\SensorsBundle\Controller\CRUD;
 
 use FAb\SensorsBundle\Entity\Station;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Station controller.
@@ -29,11 +30,6 @@ class StationController extends Controller
         return $this->render('station/index.html.twig', array(
             'stations' => $stations,
         ));
-    }
-
-    public function getStationAction()
-    {
-        return $this->indexAction();
     }
 
     /**

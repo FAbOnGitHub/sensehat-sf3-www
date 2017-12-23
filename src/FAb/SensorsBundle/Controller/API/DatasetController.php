@@ -1,6 +1,6 @@
 <?php
 
-namespace FAb\SensorsBundle\Controller;
+namespace FAb\SensorsBundle\Controller\API;
 
 use FAb\SensorsBundle\Entity\Dataset;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

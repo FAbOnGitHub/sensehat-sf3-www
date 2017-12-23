@@ -1,4 +1,5 @@
 #sensors:
+#sensors:
 #    resource: "@SensorsBundle/Controller/"
 #    type:     annotation
 #    prefix:   /
@@ -34,9 +35,14 @@ datalines:
     type:     rest
     resource: FAb\SensorsBundle\Controller\API\DatalineController
 
-crud:
+crud_station:
+    resource: "@SensorsBundle/Controller/CRUD/StationController.php"
     type:     annotation
-    resource: "@SensorsBundle/Controller/CRUD"
+
+crud_dataline:
+    resource: "@SensorsBundle/Controller/CRUD/DatalineController.php"
+    type:     annotation
+
 
 
 #app:
