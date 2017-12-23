@@ -3,21 +3,15 @@
 namespace FAb\SensorsBundle\Controller;
 
 use Monolog\Logger;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
-use FOS\RestBundle\Controller\Annotations\Get;
-use FOS\RestBundle\Controller\Annotations\View;
 use Symfony\Component\HttpFoundation\Response;
 
 
 class jsonController extends Controller
 {
-    /**
-     * @Route("/listDataline")
-     */
-    public function listDatalineAction()
+
+    public function getDatalinesAction()
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -44,18 +38,8 @@ class jsonController extends Controller
         return new JsonResponse(array($data));
     }
 
-    //* @Route("/listStation")
-    /**
-     * @Get("/stations")
-     * @Get(
-     *     path = "/listStation/{id}",
-     *     name = "list_station",
-     * )
-     * @View
-     */
-    public function listStationAction()
+    public function getStationsAction()
     {
-
         $em = $this->getDoctrine()->getManager();
 
         $stations = $em->getRepository('SensorsBundle:Station')->findAll();
@@ -63,7 +47,7 @@ class jsonController extends Controller
             $logger = new Logger();
             $logger->alert("No stations");
         }
-        return new Response( $stations );
+        return new Response($stations);
     }
 
 }

@@ -4,9 +4,8 @@ namespace FAb\SensorsBundle\Controller;
 
 use FAb\SensorsBundle\Entity\Dataline;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Dataline controller.
@@ -131,9 +130,6 @@ class DatalineController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('crud_dataline_delete', array('id' => $dataline->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
-
-
 }

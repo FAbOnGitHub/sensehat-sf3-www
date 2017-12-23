@@ -31,6 +31,11 @@ class StationController extends Controller
         ));
     }
 
+    public function getStationAction()
+    {
+        return $this->indexAction();
+    }
+
     /**
      * Creates a new station entity.
      *

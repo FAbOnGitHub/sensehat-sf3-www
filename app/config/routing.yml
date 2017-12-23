@@ -1,7 +1,12 @@
-sensors:
-    resource: "@SensorsBundle/Controller/"
+#sensors:
+#    resource: "@SensorsBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
+
+app:
+    resource: "@SensorsBundle/Controller/DefaultController.php"
     type:     annotation
-    prefix:   /
+
 
 home:
     path:  /
@@ -19,6 +24,19 @@ contact:
 sensors_data_send:
     path:  /push
     defaults: { _controller: SensorsBundle:Default:push }
+
+
+stations:
+    type:     rest
+    resource: FAb\SensorsBundle\Controller\StationController
+
+datalines:
+    type:     rest
+    resource: FAb\SensorsBundle\Controller\DatalineController
+
+crud:
+    type:     annotation
+    resource: "@SensorsBundle/Controller/CRUD"
 
 
 #app:
