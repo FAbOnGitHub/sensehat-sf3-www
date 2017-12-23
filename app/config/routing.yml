@@ -28,11 +28,11 @@ sensors_data_send:
 
 stations:
     type:     rest
-    resource: FAb\SensorsBundle\Controller\StationController
+    resource: FAb\SensorsBundle\Controller\API\StationController
 
 datalines:
     type:     rest
-    resource: FAb\SensorsBundle\Controller\DatalineController
+    resource: FAb\SensorsBundle\Controller\API\DatalineController
 
 crud:
     type:     annotation
