@@ -35,7 +35,7 @@ framework:
     php_errors:
         log: true
     serializer:
-        enabled: true
+        enabled: false
 
 # Twig Configuration
 twig:
@@ -113,14 +113,13 @@ fos_rest:
         enabled: true
     view:
         view_response_listener: true
-        formats: { json: true, xml: false, rss: false }
+        formats: { html: true, json: true, xml: false, rss: false }
     serializer:
         serialize_null: true
     format_listener:
         rules:
-            - { path: '^/', priorities: ['json'], fallback_format: 'json' }
+            - { path: '^/', priorities: ['json', 'html'], fallback_format: 'json' }
 
 
 sensio_framework_extra:
     view: { annotations: true }
-

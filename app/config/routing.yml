@@ -35,6 +35,7 @@ datalines:
     type:     rest
     resource: FAb\SensorsBundle\Controller\API\DatalineController
 
+
 crud_station:
     resource: "@SensorsBundle/Controller/CRUD/StationController.php"
     type:     annotation

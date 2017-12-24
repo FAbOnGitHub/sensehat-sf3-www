@@ -10,7 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="station")
  * @ORM\Entity(repositoryClass="FAb\SensorsBundle\Repository\StationRepository")
  */
-class Station {
+class Station
+{
 
     /**
      * @var int
@@ -56,103 +57,6 @@ class Station {
     private $datasets;
 
     /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId() {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Station
-     */
-    public function setName($name) {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName() {
-        return $this->name;
-    }
-
-    /**
-     * Set lat
-     *
-     * @param float $lat
-     *
-     * @return Station
-     */
-    public function setLat($lat) {
-        $this->lat = $lat;
-
-        return $this;
-    }
-
-    /**
-     * Get lat
-     *
-     * @return float
-     */
-    public function getLat() {
-        return $this->lat;
-    }
-
-    /**
-     * Set lng
-     *
-     * @param float $lng
-     *
-     * @return Station
-     */
-    public function setLng($lng) {
-        $this->lng = $lng;
-
-        return $this;
-    }
-
-    /**
-     * Get lng
-     *
-     * @return float
-     */
-    public function getLng() {
-        return $this->lng;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Station
-     */
-    public function setDescription($description) {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription() {
-        return $this->description;
-    }
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -192,5 +96,127 @@ class Station {
     public function getDatasets()
     {
         return $this->datasets;
+    }
+
+    public function __toArray()
+    {
+        return [
+            'id' => $this->getId(),
+             'name' => $this->getName(),
+             'lat' => $this->getLat(),
+             'long' => $this->getLng(),
+             'description' => $this->getDescription(),
+            ];
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->__toArray();
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Station
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get lat
+     *
+     * @return float
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * Set lat
+     *
+     * @param float $lat
+     *
+     * @return Station
+     */
+    public function setLat($lat)
+    {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    /**
+     * Get lng
+     *
+     * @return float
+     */
+    public function getLng()
+    {
+        return $this->lng;
+    }
+
+    /**
+     * Set lng
+     *
+     * @param float $lng
+     *
+     * @return Station
+     */
+    public function setLng($lng)
+    {
+        $this->lng = $lng;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Station
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }
