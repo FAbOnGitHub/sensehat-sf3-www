@@ -35,7 +35,7 @@ framework:
     php_errors:
         log: true
     serializer:
-        enabled: false
+        enabled: true
 
 # Twig Configuration
 twig:

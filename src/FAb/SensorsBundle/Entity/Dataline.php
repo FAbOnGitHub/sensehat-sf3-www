@@ -249,4 +249,12 @@ class Dataline
     {
         return $this->temperature_cpu;
     }
+
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return "temperature:" . $this->getTemperature(). " humidity:" . $this->getHumidity();
+    }
+
 }
