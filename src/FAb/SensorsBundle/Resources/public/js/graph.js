@@ -13,6 +13,9 @@ $(document).ready(function () {
             url: sDataURL
         }
     ).done(function (data) {
+        var len = data.length;
+        $('#count').html(len);
+
         var temperature = [];
         var humidity = [];
         var pressure = [];
@@ -22,7 +25,7 @@ $(document).ready(function () {
             var t = line['temperature'];
             var h = line['humidity'];
             var p = line['pressure'];
-            console.log("<> " + t + "; " + h + "; " + p);
+            //console.log("<> " + t + "; " + h + "; " + p);
             temperature.push([d, t]);
             humidity.push([d, h]);
             pressure.push([d, p]);
@@ -53,12 +56,12 @@ function draw_data(divGraph, label, data) {
                 'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
         },
         xAxis: {
-            type: 'datetime'
+            type: 'datetime',
         },
         yAxis: {
             title: {
                 text: label
-            }
+            },
         },
         legend: {
             enabled: false
@@ -98,6 +101,7 @@ function draw_data(divGraph, label, data) {
     });
 
 }
+
 function draw_data_humidity(divGraph, label, data) {
 
     Highcharts.chart(divGraph, {
@@ -117,7 +121,25 @@ function draw_data_humidity(divGraph, label, data) {
         yAxis: {
             title: {
                 text: label
-            }
+            },
+            plotBands: [
+                {
+                    from: 0,
+                    to: 20,
+                    color: '#FFEFFF'
+                },
+                {
+                    from: 20,
+                    to: 60,
+                    color: '#FFFFEF'
+                },
+                {
+                    from: 60,
+                    to: 100,
+                    color: '#FFEFFF'
+                }
+
+            ]
         },
         legend: {
             enabled: false
