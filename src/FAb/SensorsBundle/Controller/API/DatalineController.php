@@ -4,19 +4,40 @@ namespace FAb\SensorsBundle\Controller\API;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use FOS\RestBundle\Controller\Annotations as Rest;
-
-// N'oublions pas d'inclure Get
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use FOS\RestBundle\Controller\Annotations as Rest; // alias pour toutes les annotations
+use FOS\RestBundle\Controller\Annotations\Get; // N'oublons pas d'inclure Get
+use FOS\RestBundle\View\View;
+//use FOS\RestBundle\View\ViewHandler;
 
 
 class DatalineController extends Controller
 {
 
     /**
-     * @Rest\Get("/datalines/{id}")
+     * @Rest\View()
+     * @Rest\Get("/api/datalines/")
      */
-    public function getDatalineAction($id)
+    public function getDatalinesAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $datalines = $em->getRepository('SensorsBundle:Dataline')->findAll();
+
+        $view = View::create($datalines);
+        $view->setFormat('json');
+        return $view;
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Get("/api/datalines/{id}")
+     */
+    public function getDatalineAction(Request $request)
+    {
+        $id = $request->get('id');
         $em = $this->getDoctrine()->getManager();
         $serializer = $this->get('serializer');
         $dataline = $em->getRepository('SensorsBundle:Dataline')->find($id);
@@ -28,22 +49,5 @@ class DatalineController extends Controller
         return $response;
     }
 
-    /**
-     * @Rest\Get("/datalines/")
-     */
-    public function getDatalinesAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $serializer = $this->get('serializer');
-
-
-        $datalines = $em->getRepository('SensorsBundle:Dataline')->findAll();
-
-
-        $data = $serializer->serialize($datalines, 'json');
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
-    }
 
 }

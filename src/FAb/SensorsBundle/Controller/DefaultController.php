@@ -48,4 +48,12 @@ class DefaultController extends Controller {
         return $response;
     }
 
+    /**
+     * @Route("/graph")
+     */
+    public function grpahAction() {
+        return $this->render('SensorsBundle:Default:graph.html.twig');
+    }
+
+
 }
