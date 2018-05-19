@@ -49,7 +49,7 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("/graph")
+     * @Route("/graph", name="visu")
      */
     public function grpahAction() {
         return $this->render('SensorsBundle:Default:graph.html.twig');

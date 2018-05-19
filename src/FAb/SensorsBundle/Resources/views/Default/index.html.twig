@@ -11,105 +11,163 @@
 {% endblock %}
 
 {% block body %}
-    <!-- About Section -->
-    <section id="about" class="content-section text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2>À propos de «<em>Sensors</em>»</h2>
-                    <p>
-                        <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The
-                        theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                    <p>This theme features stock photos by
-                        <a href="http://gratisography.com/">Gratisography</a>
-                        along with a custom Google Maps skin courtesy of
-                        <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                    <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with SASS and LESS files for
-                        easy customization!</p>
+
+    <div data-spy="scroll" data-target="#mainNav" data-offset="0">
+        <!-- About Section -->
+        <section id="about" class="content-section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>À propos de «<em>Sensors</em>»</h2>
+                        <p>Le but</p>
+
+                        <p>Technos</p>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">(sonde) Python
+                                3
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">(web) Symfony
+                                3.4 et Bundles
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">(web)Bootstrap
+                                4, jQuery 4
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                (web)Highcharts 6
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">API REST</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--Data Section -->
-    <section id="data" class="download-section content-section text-center">
-        <div class="container">
-            <div class="col-lg-8 mx-auto">
-                <h2>Données</h2>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Site instrumenté
-                        <span class="badge badge-primary badge-pill">1</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Paramètres mesurés
-                        <span class="badge badge-primary badge-pill">4</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Nombre d'acquisitions
-                        <span class="badge badge-primary badge-pill">25k</span>
-                    </li>
-                </ul>
+        <!--Data Section -->
+        <section id="data" class="download-section content-section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>Données</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Site instrumenté
+                                <span class="badge badge-primary badge-pill">1</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Paramètres mesurés
+                                <span class="badge badge-primary badge-pill">4</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Nombre d'acquisitions
+                                <span class="badge badge-primary badge-pill">25k</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 ">
+                        <a title="Visualisation"
+                           href="{{ reverse_proxy_tag }}{{ path('visu') }}">
+                            <img class="rounded float-left"
+                                 alt="Exemple de graph pour le lien vers la visualisation"
+                                 src="{{ reverse_proxy_tag }}{{ asset('/bundles/sensors/img/g/sensors_graph01_256x126.png') }}"
+                            >
+                            <span>Image et lien vers la page de visualisation</span>
+                        </a>
+
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
-    <!-- Download Section -->
-    <section id="news" class="download-section content-section text-center">
-        <div class="container">
-            <div class="col-lg-8 mx-auto">
-                <h2>News</h2>
-                <ul>
-                    <li>Nouvelle IHM en grayscale :-)</li>
-                    <li>Les graphiques sont en ligne</li>
-                    <li>Les données sont importées</li>
-                    <li>La base de données est prête</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Roadmap Section -->
-    <section id="roadmap" class="download-section content-section text-center">
-        <div class="container">
-            <div class="col-lg-8 mx-auto">
-                <h2>Roadmap</h2>
-                <p>Ici les futures améliorations prévues</p>
-                <!-- <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a> -->
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Contact Section -->
-    <section id="contact" class="content-section text-center">
-        <div class="container">
-            <div class="row">
+        <!-- Download Section -->
+        <section id="news" class="download-section content-section text-center">
+            <div class="container">
                 <div class="col-lg-8 mx-auto">
-                    <h2>contact</h2>
-                    <p>Contact par mail : <a href="mailto:senshat@antaya.fr">FAb</a>
-                    </p>
-                    <p>Pas du tout présent sur les réseaux sociaux :</p>
-                    <ul class="list-inline banner-social-buttons">
-                        <li class="list-inline-item">
-                            <i class="fa fa-twitter fa-fw"></i>
-                            <span class="network-name">Twitter</span>
+                    <h2>News</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Nouvelle IHM en
+                            grayscale :-)
                         </li>
-                        <li class="list-inline-item">
-                            <i class="fa fa-github fa-fw"></i>
-                            <span class="network-name">Github</span>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Les graphiques
+                            sont en ligne
                         </li>
-                        <li class="list-inline-item">
-                            <i class="fa fa-google-plus fa-fw"></i>
-                            <span class="network-name">Google+</span>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Les données sont
+                            importées
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">La base de données
+                            est prête
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="download-section content-section text-center">
+            <div class="container">
+                <div class="col-lg-8 mx-auto">
+                    <h2>Roadmap</h2>
+                    <p>Améliorations prévues</p>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Automatiser
+                            l'envoi des données par la sonde
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Rafraîchissement
+                            automatique des graphes
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Améliorer le rendu
+                            responsive
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Publier
+                            l'interface d'admin
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Documenter la
+                            partie API
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>contact</h2>
+                        <p>
+                            Contact par mail : <a href="mailto:senshat@antaya.fr">FAb</a>
+                        </p>
+                        <p>Présent sur les réseaux sociaux :</p>
+                        <ul class="list-inline banner-social-buttons">
+                            <li class="list-inline-item">
+                                <i class="fa fa-twitter fa-fw"></i>
+                                <span class="network-name"><s>Twitter</s></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa fa-github fa-fw"></i>
+                                <span class="network-name">Github</span>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa fa-google-plus fa-fw"></i>
+                                <span class="network-name"><s>Google+</s></span>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa fa-facebook fa-fw"></i>
+                                <span class="network-name"><s>Facebook</s></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div> <!-- scrollspy>
 {% endblock %}
 
 {% block footer %}
