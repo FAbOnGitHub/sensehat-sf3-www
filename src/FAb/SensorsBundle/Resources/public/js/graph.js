@@ -4,8 +4,74 @@
  * and open the template in the editor.
  */
 
+
+/**
+ * Synchronize zooming through the setExtremes event handler.
+ */
+function syncExtremes(e) {
+    var thisChart = this.chart;
+
+    if (e.trigger !== 'syncExtremes') { // Prevent feedback loop
+        Highcharts.each(Highcharts.charts, function (chart) {
+            if (chart !== thisChart) {
+                if (chart.xAxis[0].setExtremes) { // It is null while updating
+                    chart.xAxis[0].setExtremes(
+                        e.min,
+                        e.max,
+                        undefined,
+                        false,
+                        {trigger: 'syncExtremes'}
+                    );
+                }
+            }
+        });
+    }
+}
+
+
 $(document).ready(function () {
     var sDataURL = 'http://sensors.localdomain/app_dev.php/api/datalines/';
+
+
+    /**
+     * In order to synchronize tooltips and crosshairs, override the
+     * built-in events with handlers defined on the parent element.
+     */
+    $('#graph-container').bind('mousemove touchmove touchstart', function (e) {
+        var chart,
+            point,
+            i,
+            event;
+
+        for (i = 0; i < Highcharts.charts.length; i = i + 1) {
+            chart = Highcharts.charts[i];
+            // Find coordinates within the chart
+            event = chart.pointer.normalize(e.originalEvent);
+            // Get the hovered point
+            point = chart.series[0].searchPoint(event, true);
+
+            if (point) {
+                point.highlight(e);
+            }
+        }
+    });
+    /**
+     * Override the reset function, we don't need to hide the tooltips and
+     * crosshairs.
+     */
+    Highcharts.Pointer.prototype.reset = function () {
+        return undefined;
+    };
+
+    /**
+     * Highlight a point by showing tooltip, setting hover state and draw crosshair
+     */
+    Highcharts.Point.prototype.highlight = function (event) {
+        event = this.series.chart.pointer.normalize(event);
+        this.onMouseOver(); // Show the hover marker
+        this.series.chart.tooltip.refresh(this); // Show the tooltip
+        this.series.chart.xAxis[0].drawCrosshair(event, this); // Show the crosshair
+    };
 
     $.ajax({
             method: "GET",
@@ -30,9 +96,11 @@ $(document).ready(function () {
             humidity.push([d, h]);
             pressure.push([d, p]);
         }
-        draw_data('graph-temperature', 'temperature', temperature);
-        draw_data_humidity('graph-humidity', 'humidity', humidity);
-        draw_data('graph-pressure', 'pressure', pressure);
+
+        draw_data('graph-temperature', 'temperature', temperature, '�C');
+        draw_data_humidity('graph-humidity', 'humidity', humidity, '%');
+        draw_data('graph-pressure', 'pressure', pressure, 'P');
+
         console.log("success ");
     }).fail(function () {
         alert("error");
@@ -42,14 +110,28 @@ $(document).ready(function () {
 });
 
 
-function draw_data(divGraph, label, data) {
+function draw_data(divGraph, label, data, Xunit) {
+
+    $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
 
     Highcharts.chart(divGraph, {
         chart: {
-            zoomType: 'x'
+            zoomType: 'x',
+            marginLeft: 40, // Keep all charts left aligned
+            spacingTop: 20,
+            spacingBottom: 20
         },
         title: {
-            text: label
+            text: label,
+            align: 'left',
+            margin: 0,
+            x: 30
+        },
+        credits: {
+            enabled: false
+        },
+        legend: {
+            enabled: false
         },
         subtitle: {
             text: document.ontouchstart === undefined ?
@@ -57,6 +139,13 @@ function draw_data(divGraph, label, data) {
         },
         xAxis: {
             type: 'datetime',
+            crosshair: true,
+            events: {
+                setExtremes: syncExtremes
+            },
+            // labels: {
+            //     format: '{value} ' + Xunit
+            // }
         },
         yAxis: {
             title: {
@@ -92,24 +181,56 @@ function draw_data(divGraph, label, data) {
                 threshold: null
             }
         },
-
+        tooltip: {
+            positioner: function () {
+                return {
+                    // right aligned
+                    x: this.chart.chartWidth - this.label.width - 30,
+                    y: 10 // align to title
+                };
+            },
+            borderWidth: 0,
+            backgroundColor: 'none',
+            pointFormat: '{point.y}',
+            headerFormat: '',
+            shadow: false,
+            style: {
+                fontSize: '18px'
+            },
+            valueDecimals: data.valueDecimals
+        },
         series: [{
             type: 'area',
             name: label,
-            data: data
+            data: data,
+            fillOpacity: 0.3,
+            tooltip: {
+                valueSuffix: ' ' + Xunit
+            }
         }]
     });
 
 }
 
-function draw_data_humidity(divGraph, label, data) {
+function draw_data_humidity(divGraph, label, data, Xunit) {
+
+    $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
 
     Highcharts.chart(divGraph, {
         chart: {
             zoomType: 'x'
         },
         title: {
-            text: label
+            text: label,
+            align: 'left',
+            margin: 0,
+            x: 30
+        },
+        credits: {
+            enabled: false
+        },
+        legend: {
+            enabled: false
         },
         subtitle: {
             text: document.ontouchstart === undefined ?
@@ -170,11 +291,32 @@ function draw_data_humidity(divGraph, label, data) {
                 threshold: null
             }
         },
-
+        tooltip: {
+            positioner: function () {
+                return {
+                    // right aligned
+                    x: this.chart.chartWidth - this.label.width - 30,
+                    y: 10 // align to title
+                };
+            },
+            borderWidth: 0,
+            backgroundColor: 'none',
+            pointFormat: '{point.y}',
+            headerFormat: '',
+            shadow: false,
+            style: {
+                fontSize: '18px'
+            },
+            valueDecimals: data.valueDecimals
+        },
         series: [{
             type: 'area',
             name: label,
-            data: data
+            data: data,
+            fillOpacity: 0.3,
+            tooltip: {
+                valueSuffix: ' ' + Xunit
+            }
         }]
     });
 
