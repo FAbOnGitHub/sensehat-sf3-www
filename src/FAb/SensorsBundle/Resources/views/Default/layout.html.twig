@@ -50,30 +50,37 @@
         <!-- <link rel="stylesheet"
               href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
         > -->
-        <link rel="stylesheet"
-              href="{{ reverse_proxy_tag }}{{ asset('/bundles/sensors/dist/startbootstrap-grayscale/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type='text/css'
+              href="{{ reverse_proxy_tag }}{{ asset('/bundles/sensors/dist/startbootstrap-grayscale/vendor/bootstrap/css/bootstrap.min.css') }}"
         >
+
         <!-- Optional theme -->
-        <link rel="stylesheet"
+        <link rel="stylesheet" type='text/css'
               href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
         >
-        <link rel="stylesheet"
+        <link rel="stylesheet" type='text/css'
               href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
         >
 
-        <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <link rel='stylesheet' type='text/css'
+              href='https://fonts.googleapis.com/css?family=Lobster'
+        >
 
         <link rel="stylesheet" href="{{ asset("bundles/sensors/font-awesome/css/font-awesome.min.css") }}">
 
 
 
-        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
-              type="text/css">
-        <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css"
+              href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
+        >
+        <link rel="stylesheet" type="text/css"
+              href='https://fonts.googleapis.com/css?family=Cabin:700'
+        >
 
         <!-- Custom styles for this template -->
-        <link href="{{ reverse_proxy_tag }}{{ asset('/bundles/sensors/dist/startbootstrap-grayscale/css/grayscale.min.css') }}"
-              rel="stylesheet">
+        <link rel="stylesheet" type="text/css"
+              href="{{ reverse_proxy_tag }}{{ asset('/bundles/sensors/dist/startbootstrap-grayscale/css/grayscale.min.css') }}"
+        >
 
 
 
@@ -85,10 +92,10 @@
 </head>
 
 <body id="page-top">
-<div class="container">
-    <header class=" clearfix"> <!-- .header-menu -->
+<div class="container-fluid">
+    {% block footer %}
         {{ include('SensorsBundle:Default:comp_header.html.twig') }}
-    </header>
+    {% endblock  %}
     <article>
         <div class='row'>
             <div class="col-md-12 col-xs-12">
@@ -112,9 +119,9 @@
     <aside>
     </aside>
 
-    <footer class="footer-menu clearfix">
+    {% block footer %}
         {{ include('SensorsBundle:Default:comp_footer.html.twig') }}
-    </footer>
+    {% endblock %}
     <!-- Bootstrap core JavaScript ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     {% block javascripts %}
