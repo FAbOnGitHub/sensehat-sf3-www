@@ -101,7 +101,7 @@ $(document).ready(function () {
             temperature_cpu.push([d, tc]);
         }
 
-        draw_data_temperature('graph-temperature', 'temperature', temperature, 'temperature_cpu', temperature_cpu, '°C');
+        draw_data_temperatures('graph-temperature', 'temperature', temperature, 'temperature_cpu', temperature_cpu, '°C');
         draw_data_humidity('graph-humidity', 'humidity', humidity, '%');
         draw_data_pressure('graph-pressure', 'pressure', pressure, 'P');
 
@@ -116,7 +116,7 @@ $(document).ready(function () {
 
 function draw_data_pressure(divGraph, label, data, Xunit) {
 
-    $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
+    // $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
 
     Highcharts.chart(divGraph, {
         chart: {
@@ -218,9 +218,9 @@ function draw_data_pressure(divGraph, label, data, Xunit) {
 
 }
 
-function draw_data_temperature(divGraph, label1, data1, label2, data2, Xunit) {
+function draw_data_temperatures(divGraph, label1, data1, label2, data2, Xunit) {
 
-    $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
+    // $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
 
     Highcharts.chart(divGraph, {
         chart: {
@@ -335,7 +335,7 @@ function draw_data_temperature(divGraph, label1, data1, label2, data2, Xunit) {
 
 function draw_data_humidity(divGraph, label, data, Xunit) {
 
-    $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
+    // $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
 
     Highcharts.chart(divGraph, {
         chart: {

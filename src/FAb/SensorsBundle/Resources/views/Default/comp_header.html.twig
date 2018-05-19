@@ -1,27 +1,33 @@
-<nav class="navbar navbar-default container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="{{ reverse_proxy_tag }}{{ path('home') }}">Sensors</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">top</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
         </button>
-        <a id="brand-isa" class="navbar-brand brand-isa hidden-lg hidden-md hidden-sm" href="#">ISA</a> <!-- à mettre dans le div navbar -->
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav nav-pills pull-left">
-            <li role="presentation" class=""><a href="{{reverse_proxy_tag}}{{ path('home') }}">Home</a></li>
-        </ul>
-
-        <ul class="nav navbar-nav nav-pills navbar-right">
-            <li class=""><a href="{{reverse_proxy_tag}}{# path('data') #}" title="-"></a></li>
-            <li class=""><a href="{{reverse_proxy_tag}}{# path('faq') #}" title="-"></a></li>
-            <!--
-            <li class="">
-                {{ include('SensorsBundle:Default:comp_header_connect.html.twig') }}
-            </li>
-            -->
-        </ul>
-
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#news">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#roadmap">Roadmap</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <!-- {{ include('SensorsBundle:Default:comp_header_connect.html.twig') }} -->
+                    <!-- <a class="nav-link">login part</a> -->
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
