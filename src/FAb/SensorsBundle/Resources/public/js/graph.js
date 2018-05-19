@@ -408,6 +408,14 @@ function draw_data_humidity(divGraph, label, data, Xunit) {
                     }
                 },
                 threshold: null
+            },
+            column: {
+                zones: [{
+                    value: 20, // Values up to 10 (not including) ...
+                    color: 'blue' // ... have the color blue.
+                },{
+                    color: 'red' // Values from 10 (including) and up have the color red
+                }]
             }
         },
         tooltip: {
