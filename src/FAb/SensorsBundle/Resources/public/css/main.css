@@ -12,7 +12,8 @@
     '3840x2160' '1920x1080' '1280x720' '1024x768' '640x360'
 */
 body {
-    background-color: #fff;
+    /*background-color: #fff;*/
+    background-color: #2d2d2d;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -69,7 +70,7 @@ Desktops (≥992px) 	Large devices
 Desktops (≥1200px)        */
 /* bootstrap xs Phones */
 @media (max-width: 480px) {
-    background-color: #2e2e2e;
+    background-color: #2d2d2d;
     h1 {
         font-size: 105%;
     }

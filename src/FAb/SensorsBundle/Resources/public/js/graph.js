@@ -103,7 +103,7 @@ $(document).ready(function () {
 
         draw_data_temperature('graph-temperature', 'temperature', temperature, 'temperature_cpu', temperature_cpu, '°C');
         draw_data_humidity('graph-humidity', 'humidity', humidity, '%');
-        draw_data('graph-pressure', 'pressure', pressure, 'P');
+        draw_data_pressure('graph-pressure', 'pressure', pressure, 'P');
 
         console.log("success ");
     }).fail(function () {
@@ -114,7 +114,7 @@ $(document).ready(function () {
 });
 
 
-function draw_data(divGraph, label, data, Xunit) {
+function draw_data_pressure(divGraph, label, data, Xunit) {
 
     $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
 
@@ -155,6 +155,8 @@ function draw_data(divGraph, label, data, Xunit) {
             title: {
                 text: label
             },
+            min: 960,
+            max: 1050,
         },
         legend: {
             enabled: false
@@ -257,10 +259,10 @@ function draw_data_temperature(divGraph, label1, data1, label2, data2, Xunit) {
             title: {
                 text: label1
             },
+            min: 0,
+            max: 60,
         },
-        legend: {
-            enabled: false
-        },
+
         plotOptions: {
             area: {
                 fillColor: {
@@ -362,21 +364,23 @@ function draw_data_humidity(divGraph, label, data, Xunit) {
             title: {
                 text: label
             },
+            min: 0,
+            max: 70,
             plotBands: [
                 {
                     from: 0,
                     to: 20,
-                    color: '#FFEFFF'
+                    color: 'rgba(255, 0, 0, 0.05)'
                 },
                 {
                     from: 20,
                     to: 60,
-                    color: '#FFFFEF'
+                    color: 'rgba(0, 255, 0, 0.05)'
                 },
                 {
                     from: 60,
                     to: 100,
-                    color: '#FFEFFF'
+                    color: 'rgba(255, 0, 0, 0.05)'
                 }
 
             ]
