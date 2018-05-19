@@ -83,6 +83,7 @@ $(document).ready(function () {
         $('#count').html(len);
 
         var temperature = [];
+        var temperature_cpu = [];
         var humidity = [];
         var pressure = [];
         for (var idx in data) {
@@ -91,13 +92,16 @@ $(document).ready(function () {
             var t = line['temperature'];
             var h = line['humidity'];
             var p = line['pressure'];
+            var tc = line['temperature_cpu'];
+
             //console.log("<> " + t + "; " + h + "; " + p);
             temperature.push([d, t]);
             humidity.push([d, h]);
             pressure.push([d, p]);
+            temperature_cpu.push([d, tc]);
         }
 
-        draw_data('graph-temperature', 'temperature', temperature, '�C');
+        draw_data_temperature('graph-temperature', 'temperature', temperature, 'temperature_cpu', temperature_cpu, '°C');
         draw_data_humidity('graph-humidity', 'humidity', humidity, '%');
         draw_data('graph-pressure', 'pressure', pressure, 'P');
 
@@ -211,6 +215,121 @@ function draw_data(divGraph, label, data, Xunit) {
     });
 
 }
+
+function draw_data_temperature(divGraph, label1, data1, label2, data2, Xunit) {
+
+    $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
+
+    Highcharts.chart(divGraph, {
+        chart: {
+            zoomType: 'x',
+            marginLeft: 40, // Keep all charts left aligned
+            spacingTop: 20,
+            spacingBottom: 20
+        },
+        title: {
+            text: label1,
+            align: 'left',
+            margin: 0,
+            x: 30
+        },
+        credits: {
+            enabled: false
+        },
+        legend: {
+            enabled: false
+        },
+        subtitle: {
+            text: document.ontouchstart === undefined ?
+                'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+        },
+        xAxis: {
+            type: 'datetime',
+            crosshair: true,
+            events: {
+                setExtremes: syncExtremes
+            },
+            // labels: {
+            //     format: '{value} ' + Xunit
+            // }
+        },
+        yAxis: {
+            title: {
+                text: label1
+            },
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            area: {
+                fillColor: {
+                    linearGradient: {
+                        x1: 0,
+                        y1: 0,
+                        x2: 0,
+                        y2: 1
+                    },
+                    stops: [
+                        [0, Highcharts.getOptions().colors[0]],
+                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                    ]
+                },
+                marker: {
+                    radius: 2
+                },
+                lineWidth: 1,
+                states: {
+                    hover: {
+                        lineWidth: 1
+                    }
+                },
+                threshold: null
+            }
+        },
+        tooltip: {
+            positioner: function () {
+                return {
+                    // right aligned
+                    x: this.chart.chartWidth - this.label.width - 30,
+                    y: 10 // align to title
+                };
+            },
+            borderWidth: 0,
+            backgroundColor: 'none',
+            pointFormat: '{point.y}',
+            headerFormat: '',
+            shadow: false,
+            style: {
+                fontSize: '18px'
+            },
+            valueDecimals: data1.valueDecimals
+        },
+        series: [
+            {
+                type: 'area',
+                name: label1,
+                data: data1,
+                fillOpacity: 0.9,
+                tooltip: {
+                    valueSuffix: ' ' + Xunit
+                }
+            },
+            {
+                type: 'line',
+                name: label2,
+                data: data2,
+                color: 'rgba(30, 30, 30, 0.1)',
+                fillOpacity: 0.05,
+                tooltip: {
+                    valueSuffix: ' ' + Xunit
+                }
+            }
+        ]
+    });
+
+}
+
 
 function draw_data_humidity(divGraph, label, data, Xunit) {
 
