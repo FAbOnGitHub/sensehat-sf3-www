@@ -1,0 +1,74 @@
+{% extends "SensorsBundle:Default:layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <!--
+    <link href="/bundles/sensors/css/main.css" rel="stylesheet">
+    -->
+{% endblock %}
+
+
+{% block nav %}
+    <div>
+        <h1><a href='{{ path("home") }}'>Sensors</a></h1>
+    </div>
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block body %}
+    <section id="about" class="download-section content-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>À propos de «<em>Sensors</em>»</h2>
+
+                    Sur cette page, parler du Raspi, de la carte, de l'installation en cours et des problèmes d'acquisitions.
+
+                    Puis parler des technos et roadmap.
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 ">
+                    <div class="div-square img-grayable rounded"
+                         style="background-image: url('{{ reverse_proxy_tag }}{{ asset('/bundles/sensors/img/Sense-HAT-color-462x322.jpg') }}');">
+                    </div>
+
+                </div>
+                <div class="col-lg-8">
+                    <h3 class="home">But</h3>
+                    Le projet «<span class="lobster">Sensors</span>» est né de la conjonction de la nécessité de
+                    tester diverses technos (API, Symfony),
+                    de l'envie de poursuivre la découverte du Raspberry et du besoin de mesurer certains paramètres
+                    environnementaux.
+                    <h3 class="home">Technos</h3>
+
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">(sonde) Python
+                            3
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">(web) Symfony
+                            3.4 et Bundles
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">(web)Bootstrap
+                            4, jQuery 4
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            (web)Highcharts 6
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">API REST</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+{% endblock %}
+
+{% block footer %}
+    {{ include('SensorsBundle:Default:comp_footer.html.twig') }}
+{% endblock %}

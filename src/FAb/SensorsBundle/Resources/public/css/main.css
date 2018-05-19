@@ -70,7 +70,7 @@ Desktops (≥992px) 	Large devices
 Desktops (≥1200px)        */
 /* bootstrap xs Phones */
 @media (max-width: 480px) {
-    background-color: #2d2d2d;
+    body {background-color: #2d2d2d;}
     h1 {
         font-size: 105%;
     }
