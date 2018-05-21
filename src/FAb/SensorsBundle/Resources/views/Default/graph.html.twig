@@ -14,19 +14,75 @@
     <script src="{{ reverse_proxy_tag }}{{ asset('/bundles/sensors/js/graph.js') }}"></script>
 {% endblock %}
 
+{% block header %}
+    <!-- no header -->
+{% endblock %}
 
 {% block body %}
-    <div class="row-fluid">
+    <div class="" style="min-height: 80px;"></div>
+
+    <div class="row">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10">
-            <p> Visualisation des données : <span id="count"></span> acquisitions</p>
+        <div class="col-lg-10 text-center">
+            <h1> Visualisation des données</h1>
+            <div id="box-global-count"><span id="span-count"></span> acquisitions</div>
         </div>
         <div class="col-lg-1"></div>
     </div>
-    <div class="row-fluid">
+    <div class="row">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10 centered">
+        <div class="col-lg-10">
+            <div id="waiting-box">
+                <h2> Merci de patienter...</h2>
+                <div id="box-waiting-message" class="alert alert-secondary" role="alert">
+                    <div id="waiting-message">
+                        <span class="msg-small ">Initialisation...</span>
+                    </div>
+                </div>
+                <div>
+                    Téléchargement des données :
+                    <p id="msg-dl" style="display: inline"><span id="recieved-count">0</span> acquisitions</p>
+                </div>
+                <div>Conversion des datasets :
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                             role="progressbar"  id="waiting-progress-bar"
+                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div>
+                    Préparation des graphiques :
+                </div>
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <div id="waiting-graph-temperature" class="div-square rounded img-grayable"
+                                 style="background-image: url('{{ reverse_proxy_tag }}{{ asset("/bundles/sensors/img/g/sensors_graph01_256x126.png") }}');">
+                                Température
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="waiting-graph-humidity" class="div-square rounded  img-grayable"
+                                 style="background-image: url('{{ reverse_proxy_tag }}{{ asset("/bundles/sensors/img/g/sensors_graph01_256x126.png") }}');">
+                                Humidité
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div id="waiting-graph-pression" class="div-square rounded  img-grayable"
+                                 style="background-image: url('{{ reverse_proxy_tag }}{{ asset("/bundles/sensors/img/g/sensors_graph01_256x126.png") }}');">
+                                Pression
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="graph-container">
+                <div id="graph-temperature" class="chart"></div>
+                <div id="graph-humidity" class="chart"></div>
+                <div id="graph-pressure" class="chart"></div>
+                <div id="graph-weather" class="chart"></div>
             </div>
         </div>
         <div class="col-lg-1"></div>

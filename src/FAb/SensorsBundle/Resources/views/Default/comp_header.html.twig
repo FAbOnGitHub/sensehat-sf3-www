@@ -1,27 +1,17 @@
-<nav class="navbar navbar-default container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a id="brand-isa" class="navbar-brand brand-isa hidden-lg hidden-md hidden-sm" href="#">ISA</a> <!-- à mettre dans le div navbar -->
+<!-- Intro Header -->
+<header class="masthead">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="brand-heading">Sensors</h1>
+                    <p class="intro-text">Capteurs environnmentaux avec un <span class="Lobster">Raspberry</span>
+                        <br> et une carte <span class="Lora">SenseHat</span>.</p>
+                    <a href="#project" class="btn btn-circle js-scroll-trigger">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav nav-pills pull-left">
-            <li role="presentation" class=""><a href="{{reverse_proxy_tag}}{{ path('home') }}">Home</a></li>
-        </ul>
-
-        <ul class="nav navbar-nav nav-pills navbar-right">
-            <li class=""><a href="{{reverse_proxy_tag}}{# path('data') #}" title="-"></a></li>
-            <li class=""><a href="{{reverse_proxy_tag}}{# path('faq') #}" title="-"></a></li>
-            <!--
-            <li class="">
-                {{ include('SensorsBundle:Default:comp_header_connect.html.twig') }}
-            </li>
-            -->
-        </ul>
-
-    </div>
-</nav>
+</header>

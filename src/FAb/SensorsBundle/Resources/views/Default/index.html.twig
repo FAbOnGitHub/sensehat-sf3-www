@@ -1,19 +1,186 @@
 {% extends "SensorsBundle:Default:layout.html.twig" %}
 {% block stylesheets %}
-    {{parent()}}
+    {{ parent() }}
     <!--
     <link href="/bundles/sensors/css/main.css" rel="stylesheet">
     -->
 {% endblock %}
 
+{% block header %}
+    {{ include('SensorsBundle:Default:comp_header.html.twig') }}
+{% endblock %}
 
 {% block body %}
-    <div class="row-fluid">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10">
-            <p> Hello funny World! Ça rocks!</p>
-            <p> That's all folks!</p>
-        </div>
-        <div class="col-lg-1"></div>
+
+    <div data-spy="scroll" data-target="#mainNav" data-offset="0">
+        <!-- About Section -->
+        <section id="project" class="content-section text-center active">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>À propos de «<em>Sensors</em>»</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 ">
+                        <div class="div-square img-grayable rounded"
+                             style="background-image: url('{{ reverse_proxy_tag }}{{ asset('/bundles/sensors/img/Sense-HAT-color-462x322.jpg') }}');">
+                        </div>
+
+                    </div>
+                    <div class="col-lg-8">
+                        <h3 class="home">But</h3>
+                        Le projet «<span class="lobster">Sensors</span>» est né de la conjonction de la nécessité de
+                        tester diverses technos (API, Symfony),
+                        de l'envie de poursuivre la découverte du Raspberry et du besoin de mesurer certains paramètres
+                        environnementaux.
+
+
+                        <h3 class="home">Technos</h3>
+                        <p> Faire une page dédiée à cela</p>
+                        <p> Mettre juste les logos des technos</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Data Section -->
+        <section id="data" class="download-section content-section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>Données</h2>
+                    </div>
+                </div>
+                <div class="row align-content-lg-center">
+                    <div class="col-lg-4">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                                Site instrumenté
+                                <span class="badge badge-primary badge-pill">1</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                                Paramètres mesurés
+                                <span class="badge badge-primary badge-pill">4</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                                Nombre d'acquisitions
+                                <span class="badge badge-primary badge-pill">25k</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <a title="Visualisation"
+                           href="{{ reverse_proxy_tag }}{{ path('visu') }}">
+                            <img class="rounded float-left img-grayable"
+                                 alt="Exemple de graph pour le lien vers la visualisation"
+                                 src="{{ reverse_proxy_tag }}{{ asset('/bundles/sensors/img/g/sensors_graph01_256x126.png') }}"
+                            >
+                        </a>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <a title="Visualisation"
+                           href="{{ reverse_proxy_tag }}{{ path('visu') }}"
+                           class="Link2Data lobster">
+                            Accéder à la visualisation
+                        </a>
+                    </div>
+                </div>
+            </div>
     </div>
+    </section>
+
+
+<!-- Download Section -->
+    <section id="news" class="download-section content-section text-center">
+        <div class="container">
+            <div class="col-lg-8 mx-auto">
+                <h2>News</h2>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                        Nouvelle IHM en grayscale :-)
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                        Les graphiques sont en ligne
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                        Les données sont importées
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                        La base de données est prête
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+<!-- Roadmap Section -->
+    <section id="about" class="download-section content-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>À propos</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="home">Feuille de route</h3>
+
+                    <p>Améliorations prévues</p>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                            Automatiser l'envoi des données par la sonde
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                            Rafraîchissement automatique des graphes
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                            Améliorer le rendu responsive
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                            Publier l'interface d'admin
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center li-main">
+                            Documenter la partie API
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="home">contact</h3>
+                    <p>
+                        Contact par mail : <a href="mailto:senshat@antaya.fr">FAb</a>
+                    </p>
+                    <p>Présent sur les réseaux sociaux :</p>
+                    <ul class="list-inline banner-social-buttons">
+                        <li class="list-inline-item">
+                            <i class="fa fa-twitter fa-fw"></i>
+                            <span class="network-name"><s>Twitter</s></span>
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-github fa-fw"></i>
+                            <span class="network-name">Github</span>
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-google-plus fa-fw"></i>
+                            <span class="network-name"><s>Google+</s></span>
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-facebook fa-fw"></i>
+                            <span class="network-name"><s>Facebook</s></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    </div> <!-- scrollspy>
+{% endblock %}
+
+{% block footer %}
+    {{ include('SensorsBundle:Default:comp_footer.html.twig') }}
 {% endblock %}

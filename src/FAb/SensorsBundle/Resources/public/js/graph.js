@@ -4,6 +4,23 @@
  * and open the template in the editor.
  */
 
+/**
+ * URL des données
+ * @type {string}
+ */
+var sDataURL = 'http://sensors.localdomain/app_dev.php/api/datalines/';
+
+/**
+ *
+ * @type {number} nombre de data reçues
+ */
+var ihm_waitingbox_max = 0;
+
+
+/**
+ * Avancement de la progress bar de conversion
+ */
+var ihm_waitingbox_pb_milestone = 20;
 
 /**
  * Synchronize zooming through the setExtremes event handler.
@@ -30,8 +47,6 @@ function syncExtremes(e) {
 
 
 $(document).ready(function () {
-    var sDataURL = 'http://sensors.localdomain/app_dev.php/api/datalines/';
-
 
     /**
      * In order to synchronize tooltips and crosshairs, override the
@@ -73,6 +88,14 @@ $(document).ready(function () {
         this.series.chart.xAxis[0].drawCrosshair(event, this); // Show the crosshair
     };
 
+    ihm_waitingbox_init();
+
+    setTimeout(main_action, 400);
+    console.log("Graph.js ready! " + sDataURL);
+});
+
+function main_action() {
+    ihm_waitingbox_msg('Connexion au serveur');
     $.ajax({
             method: "GET",
             dataType: 'json',
@@ -80,12 +103,13 @@ $(document).ready(function () {
         }
     ).done(function (data) {
         var len = data.length;
-        $('#count').html(len);
+        ihm_waitingbox_received(len)
 
         var temperature = [];
         var temperature_cpu = [];
         var humidity = [];
         var pressure = [];
+
         for (var idx in data) {
             var line = data[idx]
             var d = Date.parse(line['datetime']);
@@ -94,29 +118,116 @@ $(document).ready(function () {
             var p = line['pressure'];
             var tc = line['temperature_cpu'];
 
-            //console.log("<> " + t + "; " + h + "; " + p);
             temperature.push([d, t]);
             humidity.push([d, h]);
             pressure.push([d, p]);
             temperature_cpu.push([d, tc]);
-        }
 
-        draw_data_temperature('graph-temperature', 'temperature', temperature, 'temperature_cpu', temperature_cpu, '°C');
+            ihm_waitingbox_update_conversion(idx);
+        }
+        ihm_waitingbox_msg("Conversion terminée");
+        ihm_waitingbox_stop_conversion();
+
+        draw_data_temperatures('graph-temperature', 'temperature', temperature, 'temperature_cpu', temperature_cpu, '°C');
+        box_graph_on('waiting-graph-temperature');
+        ihm_waitingbox_msg("Température OK");
+
         draw_data_humidity('graph-humidity', 'humidity', humidity, '%');
+        box_graph_on('waiting-graph-humidity');
+        ihm_waitingbox_msg("Humidité OK");
+
         draw_data_pressure('graph-pressure', 'pressure', pressure, 'P');
+        box_graph_on('waiting-graph-pression');
+        ihm_waitingbox_msg("Pression OK");
+
+        setTimeout(ihm_waitingbox_end, 500);
 
         console.log("success ");
     }).fail(function () {
         alert("error");
     });
 
-    console.log("Graph.js ready! " + sDataURL);
-});
+}
 
+function ihm_waitingbox_msg(sMsg) {
+    var p = $('<span />');
+    p.addClass('msg-small');
+    p.html('| ' + sMsg);
+    $('#waiting-message').append(p);
+}
+
+function ihm_waitingbox_init() {
+    $('#box-global-count').hide();
+    $('#graph-container').hide();
+
+    $('#waiting-box').show();
+    $("#waiting-progress-bar").hide();
+    $('#msg-dl').hide();
+    box_graph_off('waiting-graph-temperature');
+    box_graph_off('waiting-graph-humidity');
+    box_graph_off('waiting-graph-pression');
+}
+
+function ihm_waitingbox_received(len) {
+    ihm_waitingbox_max = len;
+    var current_progress = 0;
+    $('#msg-dl').show();
+    $('#recieved-count').html(len);
+    $('#box-global-count').show();
+    $('#span-count').html(len);
+
+    ihm_waitingbox_msg(len + " données reçues");
+
+    $("#waiting-progress-bar")
+        .css("width", current_progress + "%")
+        .attr("aria-valuenow", current_progress)
+        .text(current_progress + "% Complete");
+    $("#waiting-progress-bar").show();
+
+    //console.log("ihm_waitingbox_init len=" + len + "/" + ihm_waitingbox_max);
+}
+
+function ihm_waitingbox_update_conversion(val) {
+    // console.log(">> val = " + val);
+    var ppc = val * 100 / ihm_waitingbox_max;
+    var milestone = Math.floor(ppc / ihm_waitingbox_pb_milestone) * ihm_waitingbox_pb_milestone;
+    var epsilon = 5;
+
+    if (Math.abs(ppc - milestone) < epsilon) {
+        $("#waiting-progress-bar")
+            .css("width", ppc + "%")
+            .attr("aria-valuenow", ppc)
+            .text(ppc + "% Complete");
+        //console.log("ihm_waitingbox_update m=" + milestone + " -%-> " + ppc + " val=" + val + " max=" + ihm_waitingbox_max);
+    }
+}
+
+function ihm_waitingbox_stop_conversion() {
+    var current_progress = 100;
+    $("#waiting-progress-bar")
+        .css("width", current_progress + "%")
+        .attr("aria-valuenow", current_progress)
+        .text(current_progress + "% Complete");
+    // console.log("ihm_waitingbox_stop val=" + current_progress);
+}
+
+
+function ihm_waitingbox_end() {
+    $('#waiting-box').hide();
+    $('#graph-container').show();
+}
+
+function box_graph_off(id) {
+    $('#' + id).addClass('img-grayable');
+}
+
+function box_graph_on(id) {
+    $('#' + id).addClass('img-ungray');
+}
 
 function draw_data_pressure(divGraph, label, data, Xunit) {
 
-    $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
+    // $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
 
     Highcharts.chart(divGraph, {
         chart: {
@@ -218,9 +329,9 @@ function draw_data_pressure(divGraph, label, data, Xunit) {
 
 }
 
-function draw_data_temperature(divGraph, label1, data1, label2, data2, Xunit) {
+function draw_data_temperatures(divGraph, label1, data1, label2, data2, Xunit) {
 
-    $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
+    // $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
 
     Highcharts.chart(divGraph, {
         chart: {
@@ -335,7 +446,7 @@ function draw_data_temperature(divGraph, label1, data1, label2, data2, Xunit) {
 
 function draw_data_humidity(divGraph, label, data, Xunit) {
 
-    $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
+    // $('<div class="chart">').appendTo('#graph-container').prop('id', divGraph);
 
     Highcharts.chart(divGraph, {
         chart: {
@@ -417,7 +528,7 @@ function draw_data_humidity(divGraph, label, data, Xunit) {
                 zones: [{
                     value: 20, // Values up to 10 (not including) ...
                     color: 'blue' // ... have the color blue.
-                },{
+                }, {
                     color: 'red' // Values from 10 (including) and up have the color red
                 }]
             }

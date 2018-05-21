@@ -16,6 +16,22 @@ class DefaultController extends Controller {
         return $this->render('SensorsBundle:Default:index.html.twig');
     }
 
+    /**
+     * @Route("/about-tech", name="about-tech")
+     */
+    public function technosAction() {
+        return $this->render('SensorsBundle:Default:techno.html.twig');
+    }
+
+    /**
+     * @Route("/about", name="about")
+     */
+    public function aboutAction() {
+        return $this->render('SensorsBundle:Default:about.html.twig');
+    }
+
+
+
     public function pushAction(Request $request) {
         $raw_data = $request->get('data');
         $json_data = json_decode($raw_data);
@@ -49,7 +65,7 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("/graph")
+     * @Route("/graph", name="visu")
      */
     public function grpahAction() {
         return $this->render('SensorsBundle:Default:graph.html.twig');
