@@ -192,14 +192,14 @@ function ihm_waitingbox_update_conversion(val) {
     // console.log(">> val = " + val);
     var ppc = val * 100 / ihm_waitingbox_max;
     var milestone = Math.floor(ppc / ihm_waitingbox_pb_milestone) * ihm_waitingbox_pb_milestone;
-    var epsilon = 1;
+    var epsilon = 0.005;
     var delta = Math.abs(ppc - milestone);
     if (delta < epsilon) {
         $("#waiting-progress-bar")
             .css("width", ppc + "%")
             .attr("aria-valuenow", ppc)
             .text(ppc + "% Complete");
-        console.log("ihm_waitingbox_update  val=" + val + " -%-> " + ppc + " | " + milestone + " " + delta);
+        //console.log("ihm_waitingbox_update  val=" + val + " -%-> " + ppc + " | " + milestone + " " + delta);
     }
 }
 
