@@ -162,7 +162,7 @@ function ihm_waitingbox_init() {
     $('#graph-container').hide();
 
     $('#waiting-box').show();
-    $("#waiting-progress-bar").hide();
+    $("#waiting-progress-box").hide();
     $('#msg-dl').hide();
     box_graph_off('waiting-graph-temperature');
     box_graph_off('waiting-graph-humidity');
@@ -179,11 +179,11 @@ function ihm_waitingbox_received(len) {
 
     ihm_waitingbox_msg(len + " données reçues");
 
+    $("#waiting-progress-box").show();
     $("#waiting-progress-bar")
         .css("width", current_progress + "%")
         .attr("aria-valuenow", current_progress)
         .text(current_progress + "% Complete");
-    $("#waiting-progress-bar").show();
 
     //console.log("ihm_waitingbox_init len=" + len + "/" + ihm_waitingbox_max);
 }
@@ -192,14 +192,14 @@ function ihm_waitingbox_update_conversion(val) {
     // console.log(">> val = " + val);
     var ppc = val * 100 / ihm_waitingbox_max;
     var milestone = Math.floor(ppc / ihm_waitingbox_pb_milestone) * ihm_waitingbox_pb_milestone;
-    var epsilon = 5;
-
-    if (Math.abs(ppc - milestone) < epsilon) {
+    var epsilon = 1;
+    var delta = Math.abs(ppc - milestone);
+    if (delta < epsilon) {
         $("#waiting-progress-bar")
             .css("width", ppc + "%")
             .attr("aria-valuenow", ppc)
             .text(ppc + "% Complete");
-        //console.log("ihm_waitingbox_update m=" + milestone + " -%-> " + ppc + " val=" + val + " max=" + ihm_waitingbox_max);
+        console.log("ihm_waitingbox_update  val=" + val + " -%-> " + ppc + " | " + milestone + " " + delta);
     }
 }
 
