@@ -17,6 +17,11 @@ ul, li .list-group-item, .li-main {
 
 }
 
+.img-ungray {
+    filter: none; /* IE6-9 */
+    -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+
 .div-square {
     width: 100%;
     padding-bottom: 100%;
@@ -42,4 +47,16 @@ h3.home {
 .Link2Data {
     font-family: Lobster, sans-serif;
     font-size: 2em;
+}
+
+.msg-small {
+    font-size: 0.8em;
+    font-family: monospace, monospace;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+waiting-message {
+    height: 100px;
+    overflow: scroll;
 }
