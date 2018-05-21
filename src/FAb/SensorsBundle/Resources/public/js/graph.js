@@ -8,7 +8,8 @@
  * URL des données
  * @type {string}
  */
-var sDataURL = 'http://sensors.localdomain/app_dev.php/api/datalines/';
+//var sDataURL = 'http://sensors.localdomain/app.php/api/datalines/';
+//var sDataURL = '{{api-url}}/datalines/';
 
 /**
  *

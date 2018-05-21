@@ -50,6 +50,7 @@ twig:
         page_title: ":) "
         favicon: /bundles/sensors/favicon/favicon-isa-blue_16x16.ico
         favicon_apple: /bundles/sensors/favicon/favicon-isa-blue
+        api_url: %API_URL%
 
     #paths:
     #    '%kernel.root_dir%/../src/SensorsBundle/Resources/views/Admin/': CRUD
