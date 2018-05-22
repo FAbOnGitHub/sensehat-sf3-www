@@ -7,6 +7,13 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="FAbrice Mendes">
+    <meta name="keywords" content="xhtml, html5, article, section, aside, footer, header, nav"/>
+    <meta name="description"
+          content="Raspberry, SenseHat, Temperature, humidity, pressure">
+    <meta property="og:description"
+          content="Raspberry, SenseHat, Temperature, humidity, pressure"
+    ">
+
 
     <link rel="icon" href="{{ reverse_proxy_tag }}{{ favicon }}">
     <link rel="shortcut icon" href="{{ reverse_proxy_tag }}{{ favicon }}">
@@ -15,15 +22,24 @@
     <link rel="apple-touch-icon" sizes="60x60" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_60x60.png?v=Gvv0lovknM">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_72x72.png?v=Gvv0lovknM">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_76x76.png?v=Gvv0lovknM">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_114x114.png?v=Gvv0lovknM">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_120x120.png?v=Gvv0lovknM">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_144x144.png?v=Gvv0lovknM">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_152x152.png?v=Gvv0lovknM">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_180x180.png?v=Gvv0lovknM">
-    <link rel="icon" type="image/png" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_32x32.png?v=Gvv0lovknM" sizes="32x32">
-    <link rel="icon" type="image/png" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_192x192.png?v=Gvv0lovknM" sizes="192x192">
-    <link rel="icon" type="image/png" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_96x96.png?v=Gvv0lovknM" sizes="96x96">
-    <link rel="icon" type="image/png" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_16x16.png?v=Gvv0lovknM" sizes="16x16">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="{{ reverse_proxy_tag }}{{ favicon_apple }}_114x114.png?v=Gvv0lovknM">
+    <link rel="apple-touch-icon" sizes="120x120"
+          href="{{ reverse_proxy_tag }}{{ favicon_apple }}_120x120.png?v=Gvv0lovknM">
+    <link rel="apple-touch-icon" sizes="144x144"
+          href="{{ reverse_proxy_tag }}{{ favicon_apple }}_144x144.png?v=Gvv0lovknM">
+    <link rel="apple-touch-icon" sizes="152x152"
+          href="{{ reverse_proxy_tag }}{{ favicon_apple }}_152x152.png?v=Gvv0lovknM">
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="{{ reverse_proxy_tag }}{{ favicon_apple }}_180x180.png?v=Gvv0lovknM">
+    <link rel="icon" type="image/png" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_32x32.png?v=Gvv0lovknM"
+          sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_192x192.png?v=Gvv0lovknM"
+          sizes="192x192">
+    <link rel="icon" type="image/png" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_96x96.png?v=Gvv0lovknM"
+          sizes="96x96">
+    <link rel="icon" type="image/png" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_16x16.png?v=Gvv0lovknM"
+          sizes="16x16">
     <link rel="manifest" href="{{ reverse_proxy_tag }}/manifest.json?v=Gvv0lovknM">
     <link rel="mask-icon" href="{{ reverse_proxy_tag }}/safari-pinned-tab.svg?v=Gvv0lovknM">
     <meta name="apple-mobile-web-app-title" content="Sensors">
@@ -32,10 +48,11 @@
     <meta name="msapplication-TileImage" content="/mstile-144x144.png?v=Gvv0lovknM">
     <meta name="theme-color" content="#ffffff">
 
+
     <title>{% block title %} {{ page_title |default(':)') }} - {{ title }} {% endblock %}</title>
 
     {% block keywords %}
-        <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/>
+        <link rel="schema.DC" href="http://purl.org/DC/elements/1.0/">
         <meta name="DC.Title" content="Sensors"/>
         <meta name="DC.Creator" content="F Mendes"/>
         <meta name="DC.Subject" content="Sensors for raspberry sense hat"/>
@@ -70,7 +87,8 @@
         >
 
 
-        <link rel="stylesheet" href="{{ reverse_proxy_tag }}{{ asset("bundles/sensors/font-awesome/css/font-awesome.min.css") }}">
+        <link rel="stylesheet"
+              href="{{ reverse_proxy_tag }}{{ asset("bundles/sensors/font-awesome/css/font-awesome.min.css") }}">
 
 
 
