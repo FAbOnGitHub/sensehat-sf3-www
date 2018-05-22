@@ -36,7 +36,9 @@ l'air de certaines pièces. Le Raspberry et la SenseHat sont très abordables.
   *  [X] Mettre des données en lignes
   *  [ ] Restreindre la plage temporelle d'accès
   *  [ ] Faire les corrections (IHM)
+  
 *  [ ] Expertiser les données et voir le besoin en terme de correction
+
 *  [ ] DÉMO v2
   -  [ ] Améliorer script de collecte
   -  [ ] Faire une observation live (NRT)
@@ -44,6 +46,7 @@ l'air de certaines pièces. Le Raspberry et la SenseHat sont très abordables.
   -  [ ] Faire une interface d'administration
     - [X] CRUD
     - [ ] Admin 
+
 *  [ ] DÉMO v3
   * [ ] Migrer en Symfony 4
   * [ ] Introduire Vue Js
