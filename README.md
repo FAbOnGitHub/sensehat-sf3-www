@@ -31,15 +31,18 @@ l'air de certaines pièces. Le Raspberry et la SenseHat sont très abordables.
 
 ### Road Map
 
+Initialisation
 *  [X] Tester et aquérir des données
-*  [X] DÉMO v1
+
+DÉMO v1
   *  [X] Mettre des données en lignes
   *  [ ] Restreindre la plage temporelle d'accès
   *  [ ] Faire les corrections (IHM)
-  
+
+Maturation
 *  [ ] Expertiser les données et voir le besoin en terme de correction
 
-*  [ ] DÉMO v2
+DÉMO v2
   -  [ ] Améliorer script de collecte
   -  [ ] Faire une observation live (NRT)
   -  [ ] Activer la partie multi-sites / catpeurs
@@ -47,7 +50,7 @@ l'air de certaines pièces. Le Raspberry et la SenseHat sont très abordables.
     - [X] CRUD
     - [ ] Admin 
 
-*  [ ] DÉMO v3
+DÉMO v3
   * [ ] Migrer en Symfony 4
   * [ ] Introduire Vue Js
 
