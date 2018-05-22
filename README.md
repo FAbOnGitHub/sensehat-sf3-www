@@ -18,11 +18,11 @@ l'air de certaines pièces. Le Raspberry et la SenseHat sont très abordables.
 
 ### Technologies testées
 
-    - Symfony 3.4 (optique Symfony 4 + webpack)
-    - API Rest (FOSRestBundle et autes)
-    Composants :
-    - Bootstrap theme : [grayscale](https://startbootstrap.com/template-overviews/grayscale/)
-    - Graphiques [Highcharts]()
+-  Symfony 3.4 (optique Symfony 4 + webpack)
+-  API Rest (FOSRestBundle et autes)
+Composants :
+-  Bootstrap theme : [grayscale](https://startbootstrap.com/template-overviews/grayscale/)
+-  Graphiques [Highcharts](https://www.highcharts.com/)
 
 ### Matériels
 
