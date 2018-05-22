@@ -38,10 +38,10 @@ l'air de certaines pièces. Le Raspberry et la SenseHat sont très abordables.
   *  [ ] Faire les corrections (IHM)
 *  [ ] Expertiser les données et voir le besoin en terme de correction
 *  [ ] DÉMO v2
-  *  [ ] Améliorer script de collecte
-  *  [ ] Faire une observation live (NRT)
-  *  [ ] Activer la partie multi-sites / catpeurs
-  *  [ ] Faire une interface d'administration
+  -  [ ] Améliorer script de collecte
+  -  [ ] Faire une observation live (NRT)
+  -  [ ] Activer la partie multi-sites / catpeurs
+  -  [ ] Faire une interface d'administration
     - [X] CRUD
     - [ ] Admin 
 *  [ ] DÉMO v3
