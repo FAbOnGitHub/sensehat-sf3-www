@@ -8,8 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="FAbrice Mendes">
 
-    <link rel="icon" href="{{ favicon }}">
-    <link rel="shortcut icon" href="{{ favicon }}">
+    <link rel="icon" href="{{ reverse_proxy_tag }}{{ favicon }}">
+    <link rel="shortcut icon" href="{{ reverse_proxy_tag }}{{ favicon }}">
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_57x57.png?v=Gvv0lovknM">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ reverse_proxy_tag }}{{ favicon_apple }}_60x60.png?v=Gvv0lovknM">
@@ -70,7 +70,7 @@
         >
 
 
-        <link rel="stylesheet" href="{{ asset("bundles/sensors/font-awesome/css/font-awesome.min.css") }}">
+        <link rel="stylesheet" href="{{ reverse_proxy_tag }}{{ asset("bundles/sensors/font-awesome/css/font-awesome.min.css") }}">
 
 
 
