@@ -9,7 +9,7 @@
 
 {% block nav %}
     <div>
-        <h1><a href='{{ path("home") }}'>Sensors</a></h1>
+        <h1><a href='{{ reverse_proxy_tag }}{{ path("home") }}'>Sensors</a></h1>
     </div>
 {% endblock %}
 
