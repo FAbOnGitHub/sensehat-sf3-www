@@ -27,6 +27,7 @@ class DatalineController extends Controller
         $datalines = $em->getRepository('SensorsBundle:Dataline')->findAll();
 
         $view = View::create($datalines);
+        $view->setHeader('Access-Control-Allow-Origin', '*');
         $view->setFormat('json');
         return $view;
     }
@@ -45,6 +46,7 @@ class DatalineController extends Controller
 
         $data = $serializer->serialize($dataline, 'json');
         $response = new Response($data);
+        $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }

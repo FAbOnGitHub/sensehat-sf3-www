@@ -199,7 +199,7 @@ function ihm_waitingbox_update_conversion(val) {
             .css("width", ppc + "%")
             .attr("aria-valuenow", ppc)
             .text(ppc + "% Complete");
-        //console.log("ihm_waitingbox_update  val=" + val + " -%-> " + ppc + " | " + milestone + " " + delta);
+        console.log("ihm_waitingbox_update  val=" + val + " -%-> " + ppc + " | " + milestone + " " + delta);
     }
 }
 
