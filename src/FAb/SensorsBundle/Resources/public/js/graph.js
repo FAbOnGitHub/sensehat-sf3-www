@@ -155,6 +155,7 @@ function ihm_waitingbox_msg(sMsg) {
     p.addClass('msg-small');
     p.html('| ' + sMsg);
     $('#waiting-message').append(p);
+    console.log("msg=" + sMsg);
 }
 
 function ihm_waitingbox_init() {
@@ -162,7 +163,7 @@ function ihm_waitingbox_init() {
     $('#graph-container').hide();
 
     $('#waiting-box').show();
-    $("#waiting-progress-box").hide();
+    // $("#waiting-progress-box").hide();
     $('#msg-dl').hide();
     box_graph_off('waiting-graph-temperature');
     box_graph_off('waiting-graph-humidity');
