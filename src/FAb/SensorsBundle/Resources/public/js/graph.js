@@ -95,6 +95,15 @@ $(document).ready(function () {
     console.log("Graph.js ready! " + sDataURL);
 });
 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 function main_action() {
     ihm_waitingbox_msg('Connexion au serveur');
     $.ajax({
@@ -195,13 +204,18 @@ function ihm_waitingbox_update_conversion(val) {
     var milestone = Math.floor(ppc / ihm_waitingbox_pb_milestone) * ihm_waitingbox_pb_milestone;
     var epsilon = 0.005;
     var delta = Math.abs(ppc - milestone);
+
     if (delta < epsilon) {
+        ppc = 40;
         $("#waiting-progress-bar")
             .css("width", ppc + "%")
             .attr("aria-valuenow", ppc)
             .text(ppc + "% Complete");
         console.log("ihm_waitingbox_update  val=" + val + " -%-> " + ppc + " | " + milestone + " " + delta);
+        sleep(3000);
+        ihm_waitingbox_stop_conversion();
     }
+
 }
 
 function ihm_waitingbox_stop_conversion() {
@@ -566,3 +580,15 @@ function draw_data_humidity(divGraph, label, data, Xunit) {
 
 }
 
+$(function() {
+    var current_progress22 = 0;
+    var interval = setInterval(function() {
+        current_progress22 += 10;
+        $("#dynamic")
+            .css("width", current_progress22 + "%")
+            .attr("aria-valuenow", current_progress22)
+            .text(current_progress22 + "% Complete");
+        if (current_progress22 >= 100)
+            clearInterval(interval);
+    }, 1000);
+});

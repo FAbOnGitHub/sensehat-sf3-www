@@ -29,6 +29,11 @@
         <div class="col-lg-10 text-center">
             <h1> Visualisation des données</h1>
             <div id="box-global-count"><span id="span-count"></span> acquisitions</div>
+            <div class="progress">
+                <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                    <span id="current-progress"></span>
+                </div>
+            </div>
         </div>
         <div class="col-lg-1"></div>
     </div>
@@ -49,7 +54,7 @@
                 <div>Conversion des datasets :
                     <div id="waiting-progress-box" class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated"
-                             role="progressbar" id="waiting-progress-bar"
+                             role="progressbar" id="waiting-progress-bar" progress-bar progress-bar-success progress-bar-striped active
                              aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
                         </div>
                     </div>
