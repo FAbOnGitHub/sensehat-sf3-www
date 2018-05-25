@@ -211,9 +211,7 @@ function ihm_waitingbox_update_conversion(val) {
             .css("width", ppc + "%")
             .attr("aria-valuenow", ppc)
             .text(ppc + "% Complete");
-        console.log("ihm_waitingbox_update  val=" + val + " -%-> " + ppc + " | " + milestone + " " + delta);
-        sleep(3000);
-        ihm_waitingbox_stop_conversion();
+       // console.log("ihm_waitingbox_update  val=" + val + " -%-> " + ppc + " | " + milestone + " " + delta);
     }
 
 }
@@ -590,5 +588,5 @@ $(function() {
             .text(current_progress22 + "% Complete");
         if (current_progress22 >= 100)
             clearInterval(interval);
-    }, 1000);
+    }, 200);
 });
